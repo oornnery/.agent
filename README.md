@@ -105,5 +105,5 @@ uv run scripts/agent.py list
 uv run scripts/agent.py status
 ```
 
-> **Note**: On OneDrive, use `uv run --no-cache` if you see hardlink errors.
+> **Note**: Use `uv run --no-cache` if you see hardlink errors.
 
