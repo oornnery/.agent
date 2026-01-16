@@ -85,7 +85,7 @@ uv run ruff check . --fix --unsafe-fixes
 | Tests | ✅ Pass | 47 passed, 0 failed |
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

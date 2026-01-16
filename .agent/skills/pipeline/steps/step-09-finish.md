@@ -100,7 +100,7 @@ After PR is created:
 - [ ] Correct reviewers assigned
 - [ ] Labels applied
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {
@@ -131,7 +131,7 @@ Pipeline is complete when:
 ## Handoff Summary
 
 ```markdown
-## APEX Complete
+## PIPELINE Complete
 
 **Goal**: [Original goal]
 **Branch**: `feat/xxx`

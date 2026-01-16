@@ -83,7 +83,7 @@ If a test passes sometimes and fails others:
 - None
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

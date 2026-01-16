@@ -86,7 +86,7 @@ Be honest, thorough, and critical.
 1. [File:Line] Suggestion
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

@@ -105,7 +105,7 @@ Before proceeding, ask:
 - Typecheck: `<command>`
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

@@ -38,14 +38,14 @@ Use safe naming convention:
 git checkout -b feat/<slug>
 ```
 
-### 3. Create APEX Scratchpad
+### 3. Create PIPELINE Scratchpad
 
 Initialize mental state (not necessarily a file):
 - Goal summary (1 line)
 - Constraints (stack, style, deadlines)
 - Definition of done
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

@@ -122,7 +122,7 @@ Risks identified: [summary]
 Proceed with this plan?
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

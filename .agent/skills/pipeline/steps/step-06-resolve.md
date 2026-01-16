@@ -62,7 +62,7 @@ If you choose NOT to fix something, explain why:
 - [ ] #1: Could use list comprehension — Skipped
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

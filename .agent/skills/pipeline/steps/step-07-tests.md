@@ -104,7 +104,7 @@ def test_<what>_<when>_<expected>():
 - API response format
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

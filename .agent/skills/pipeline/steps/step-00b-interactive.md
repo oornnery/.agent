@@ -43,7 +43,7 @@ Proceed with A, or prefer B?
 - Standard patterns already in codebase
 - Trivial implementation details
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {
@@ -55,7 +55,7 @@ Proceed with A, or prefer B?
 ## Example Usage
 
 ```bash
-/apex --interactive refactor billing pipeline
-/apex --interactive migrate database schema
-/apex --interactive add payment processing
+/PIPELINE --interactive refactor billing pipeline
+/PIPELINE --interactive migrate database schema
+/PIPELINE --interactive add payment processing
 ```

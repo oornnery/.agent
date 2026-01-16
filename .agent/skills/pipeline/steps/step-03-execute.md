@@ -77,7 +77,7 @@ After each task, update mental state:
 - Validation: format ✅ lint ✅
 ```
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {

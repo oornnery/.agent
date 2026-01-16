@@ -30,7 +30,7 @@
 - Extensive code review
 - Documentation updates (unless requested)
 
-## Output (APEX_STATE)
+## Output (PIPELINE_STATE)
 
 ```json
 {
@@ -42,7 +42,7 @@
 ## Example Usage
 
 ```bash
-/apex --economy fix typo in config loader
-/apex --economy update version in package.json
-/apex --economy add missing import
+/PIPELINE --economy fix typo in config loader
+/PIPELINE --economy update version in package.json
+/PIPELINE --economy add missing import
 ```
