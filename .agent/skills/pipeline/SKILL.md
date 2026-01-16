@@ -38,37 +38,58 @@ Then follow the matching stack guide in `stacks/`.
 
 ## Step Execution Order
 
-Execute steps sequentially:
+Execute steps sequentially. **Gate steps are blocking.**
 
-| Step | File | Purpose |
-|------|------|---------|
-| 0 | `step-00-init.md` | Branch + workspace setup |
-| 0b | `step-00b-economy.md` | Economy mode rules (optional) |
-| 0b | `step-00b-interactive.md` | Interactive mode rules (optional) |
-| 1 | `step-01-analyze.md` | Understand system + touch points |
-| 2 | `step-02-plan.md` | Implementation plan + checkpoints |
-| 3 | `step-03-execute.md` | Implement in small diffs |
-| 4 | `step-04-validate.md` | Lint, typecheck, quick tests |
-| 5 | `step-05-review.md` | Self-PR review |
-| 6 | `step-06-resolve.md` | Fix issues from review |
-| 7 | `step-07-tests.md` | Add/update tests |
-| 8 | `step-08-run-tests.md` | Full test suite |
-| 9 | `step-09-finish.md` | PR-ready output |
+| Step | File | Purpose | Gate? |
+|------|------|---------|-------|
+| 0 | `step-00-init.md` | Branch + workspace setup | |
+| 0b | `step-00b-economy.md` | Economy mode rules (optional) | |
+| 0b | `step-00b-interactive.md` | Interactive mode rules (optional) | |
+| 1 | `step-01-analyze.md` | Understand system + touch points | |
+| 2 | `step-02-plan.md` | Implementation plan + checkpoints | |
+| 3 | `step-03-execute.md` | Implement in small diffs | |
+| 4 | `step-04-validate.md` | Lint, typecheck, quick tests | |
+| 5 | `step-05-review.md` | Self-PR review | 🚧 **GATE** |
+| 6 | `step-06-resolve.md` | Fix issues from review | |
+| 7 | `step-07-tests.md` | Add/update tests | |
+| 8 | `step-08-run-tests.md` | Full test suite | 🚧 **GATE** |
+| 9 | `step-09-finish.md` | PR-ready output | |
+
+## Gate Steps (Blocking)
+
+These steps require agent delegation and cannot be skipped:
+
+### Step 05 — Review Gate
+- **Delegate to**: `reviewer` agent (READ-ONLY)
+- **Blocking condition**: Any `must_fix` issue
+- **Required output**: `review_passed: true` in PIPELINE_STATE
+
+### Step 08 — Validation Gate  
+- **Delegate to**: `tester` agent
+- **Blocking condition**: Any test/lint/type failure
+- **Required output**: `validation_passed: true` in PIPELINE_STATE
 
 ## Required Output: PIPELINE_STATE
 
-After each step, produce a structured summary:
+**Every step MUST end with a valid PIPELINE_STATE.**
 
 ```json
 {
+  "current_step": "step-XX-name",
   "goal": "one-line goal",
   "mode": "auto|economy|interactive",
   "branch": "feat/xxx",
-  "scope": "affected areas",
+  "stack": {
+    "detected": "python-uv",
+    "test_command": "uv run pytest -v",
+    "lint_command": "uv run ruff check .",
+    "format_command": "uv run ruff format .",
+    "typecheck_command": "uv run ty check"
+  },
   "files_touched": [],
-  "commands_run": [],
   "test_status": "pending|pass|fail",
-  "risks": [],
+  "review_passed": true,
+  "validation_passed": true,
   "next_step": "step-XX"
 }
 ```
@@ -81,6 +102,8 @@ You can only finish if:
 - ✅ Formatting + lint is clean
 - ✅ Type-check is clean (if exists)
 - ✅ Tests pass (existing + new)
+- ✅ Review gate passed (`review_passed: true`)
+- ✅ Validation gate passed (`validation_passed: true`)
 - ✅ PR description complete (what/why/how/tested/risk)
 - ✅ No obvious TODOs left behind
 
@@ -97,11 +120,17 @@ You can only finish if:
 /pipeline --interactive refactor billing pipeline safely
 ```
 
-## Subagents Available
+## Subagents (Agent Isolation)
 
-| Agent | Purpose | Tools |
-|-------|---------|-------|
-| `runner` | Executes pipeline | Read, Edit, Bash, Grep |
-| `reviewer` | Strict code review | Read, Grep (no edit) |
-| `tester` | Test specialist | Read, Edit, Bash |
-| `researcher` | Codebase analysis | Read, Grep, Glob |
+| Agent | Purpose | Tools | Isolation |
+|-------|---------|-------|-----------|
+| `runner` | Orchestrates pipeline | Read, Edit, Bash, Grep | Main driver |
+| `reviewer` | Code review gate | Read, Grep | **READ-ONLY** |
+| `tester` | Test/validation gate | Read, Edit, Bash | Tests only |
+| `researcher` | Codebase analysis | Read, Grep, Glob | **READ-ONLY** |
+
+**Isolation Rules:**
+- Runner **cannot** do code review → must delegate to `reviewer`
+- Runner **should** delegate tests → to `tester`
+- Reviewer **cannot** edit files
+- Researcher **cannot** edit files

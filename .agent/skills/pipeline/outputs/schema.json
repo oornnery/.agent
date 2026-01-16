@@ -1,15 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "PIPELINE_STATE",
-  "description": "Structured state for pipeline handoff between steps",
+  "description": "Structured state for pipeline handoff between steps. REQUIRED after every step.",
   "type": "object",
   "required": [
+    "current_step",
     "goal",
     "mode",
     "branch",
     "next_step"
   ],
   "properties": {
+    "current_step": {
+      "type": "string",
+      "description": "Current step being executed (e.g., step-01-analyze)"
+    },
     "goal": {
       "type": "string",
       "description": "One-line goal description"
@@ -183,9 +188,13 @@
       },
       "description": "PR details when created"
     },
-    "current_step": {
-      "type": "string",
-      "description": "Current step being executed"
+    "review_passed": {
+      "type": "boolean",
+      "description": "Gate: true if code review passed (no must_fix issues)"
+    },
+    "validation_passed": {
+      "type": "boolean",
+      "description": "Gate: true if all tests/lint/typecheck passed"
     },
     "next_step": {
       "type": "string",

@@ -1,7 +1,26 @@
-# Step 05 — REVIEW (Self-PR Review)
+# Step 05 — REVIEW (Self-PR Review) 🚧 GATE
 
 ## Goal
 Act like a strict teammate reviewing your own PR.
+
+> **⚠️ THIS IS A GATE STEP**
+> Cannot proceed to step-06 if any `must_fix` issue exists.
+> Must delegate to `reviewer` agent for isolation.
+
+## Gate Requirements
+
+1. **Delegate to Reviewer Agent**
+   - Runner must invoke `reviewer` agent
+   - Reviewer is READ-ONLY (cannot edit files)
+   - Reviewer returns structured issues list
+
+2. **Blocking Conditions**
+   - Any `must_fix` issue → BLOCKED
+   - Must fix all blockers before proceeding
+
+3. **Output Required**
+   - `review_issues` array in PIPELINE_STATE
+   - `review_passed: true|false`
 
 ## Review Mindset
 

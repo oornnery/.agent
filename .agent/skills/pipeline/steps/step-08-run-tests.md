@@ -1,7 +1,28 @@
-# Step 08 — VERIFY TESTS (Full Suite / CI Parity)
+# Step 08 — VERIFY TESTS (Full Suite / CI Parity) 🚧 GATE
 
 ## Goal
 Ensure the full test pipeline passes, matching CI behavior.
+
+> **⚠️ THIS IS A GATE STEP**
+> Cannot proceed to step-09 if any test/lint/type check fails.
+> Must delegate to `tester` agent for isolation.
+
+## Gate Requirements
+
+1. **Delegate to Tester Agent**
+   - Runner must invoke `tester` agent
+   - Tester runs full validation suite
+   - Tester returns structured results
+
+2. **Blocking Conditions**
+   - Any test failure → BLOCKED
+   - Any lint error → BLOCKED
+   - Any type error → BLOCKED
+   - Must fix all before proceeding
+
+3. **Output Required**
+   - `test_status`, `lint_status`, `typecheck_status` in PIPELINE_STATE
+   - All must be `pass` to proceed
 
 ## Actions
 
