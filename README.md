@@ -1,4 +1,4 @@
-# Agent Rules & Guidelines
+# Agent Rules & Skills
 
 AI coding agent instructions for Python projects with FastAPI, Jx/JinjaX, HTMX, and modern tooling.
 
@@ -6,143 +6,104 @@ AI coding agent instructions for Python projects with FastAPI, Jx/JinjaX, HTMX, 
 
 ```
 .agent/
-├── agents/              # Specialized subagents
-│   ├── runner.md
-│   ├── reviewer.md
-│   ├── tester.md
-│   └── researcher.md
-├── rules/               # Instruction files with frontmatter
-│   ├── 00-scope.md
-│   ├── 01-second-order.md
-│   ├── 10-project-modes.md
-│   ├── 20-tooling-workflows.md
-│   ├── 30-architecture-boundaries.md
-│   ├── 40-html-first-jx-htmx.md
-│   ├── ... (frontend, backend, realtime)
-│   └── 90-agent-protocol.md
-├── skills/              # Domain-specific capabilities
+├── agents/              # Specialized personas
+│   ├── runner.md        # Executes /pipeline
+│   ├── reviewer.md      # Read-only review
+│   ├── tester.md        # Test specialist
+│   └── researcher.md    # Codebase analysis
+│
+├── rules/               # Short principles (< 30 lines)
+│   ├── 00-core.md       # Safety + scope
+│   ├── 01-python.md     # Python style
+│   ├── 02-architecture.md
+│   └── 03-tooling.md    # uv, ruff, ty, pytest
+│
+├── skills/
 │   ├── pipeline/        # Feature → PR workflow
 │   │   ├── SKILL.md
 │   │   ├── steps/       # 10 pipeline steps
-│   │   ├── stacks/      # Stack-specific guides
-│   │   ├── templates/   # PR, commit templates
-│   │   └── outputs/     # Schema definitions
-│   ├── handoff/         # Context management
-│   ├── explorer/        # Codebase analysis
-│   ├── code-review/     # Review patterns
-│   ├── git-workflow/    # Version control
-│   └── test-runner/     # Test execution
+│   │   └── outputs/     # State schema
+│   │
+│   ├── frameworks/      # Framework-specific guides
+│   │   ├── jx-jinjax.md
+│   │   ├── faststream.md
+│   │   ├── formidable.md
+│   │   ├── sqlmodel.md
+│   │   └── sse.md
+│   │
+│   ├── patterns/        # Design patterns
+│   │   ├── design-system.md
+│   │   ├── animations.md
+│   │   ├── ui-components.md
+│   │   ├── api-endpoints.md
+│   │   ├── security.md
+│   │   ├── rate-limiting.md
+│   │   ├── bff-pattern.md
+│   │   └── pages-routes.md
+│   │
+│   ├── code-review/     # Self-review checklists
+│   ├── test-runner/     # Test execution
+│   ├── git-workflow/    # Git conventions
+│   ├── handoff/         # Context transfer
+│   └── explorer/        # Codebase analysis
+│
+├── stacks/              # Tech-specific configs
+│   ├── python-uv.md
+│   ├── node-pnpm.md
+│   ├── go.md
+│   └── rust.md
+│
+├── templates/           # PR, commit, changelog
 ├── prompts/             # System prompts
 ├── workflows/           # Orchestrated flows
-└── scripts/             # Shell utilities
-    └── agent.sh         # Setup & management
-```
-
-## Agent Skills Stack
-
-All AI coding agents share the same skill definitions via symlinks.
-
-| Agent        | Skill Path         |
-| ------------ | ------------------ |
-| OpenCode     | `.opencode/skill/` |
-| Claude Code  | `.claude/skills/`  |
-| Codex        | `.codex/skills/`   |
-| Cursor       | `.cursor/skills/`  |
-| Amp          | `.agents/skills/`  |
-| Antigravity  | `.agent/skills/`   |
-| Copilot      | `.copilot/skills/` |
-
-### Setup
-
-```bash
-# Initialize all skills for an agent
-./scripts/agent.sh init claude
-
-# Initialize only specific skills
-./scripts/agent.sh init claude --skills pipeline,handoff,test-runner
-
-# Initialize with specific stack
-./scripts/agent.sh init claude --skills pipeline --stack python
-
-# Add a single skill
-./scripts/agent.sh add skill pipeline
-
-# List available skills
-./scripts/agent.sh list skills
-
-# Check status
-./scripts/agent.sh status
+└── scripts/
+    └── agent.sh
 ```
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| `pipeline` | 10-step autonomous workflow (feature → PR) |
-| `handoff` | Context management and session transfer |
-| `explorer` | Read-only codebase analysis |
-| `code-review` | Self-review patterns and checklists |
-| `git-workflow` | Branch, commit, PR conventions |
-| `test-runner` | Test execution and coverage |
+| `/pipeline` | 10-step feature → PR workflow |
+| `/code-review` | Self-review checklists |
+| `/test-runner` | Test execution & debugging |
+| `/git-workflow` | Branch, commit, PR conventions |
+| `/handoff` | Context management |
+| `/explorer` | Codebase analysis |
 
-### Pipeline Workflow
+## Frameworks
 
-```bash
-# Full autonomous mode
-/pipeline --auto add user authentication
-
-# Economy mode (minimal changes)
-/pipeline --economy fix typo in README
-
-# Interactive mode (checkpoints)
-/pipeline --interactive refactor payment system
-```
-
-## Tech Stack
-
-| Category        | Tools            |
-| --------------- | ---------------- |
-| Runtime         | Python >= 3.12   |
-| Package Manager | uv (mandatory)   |
-| Web Framework   | FastAPI          |
-| Templating      | Jx / JinjaX      |
-| Interactivity   | HTMX             |
-| Styling         | Tailwind CSS     |
-| Forms           | Formidable       |
-| Database        | SQLModel (async) |
-| Format/Lint     | ruff             |
-| Typecheck       | ty               |
-| Tests           | pytest           |
-| Events          | FastStream       |
+| Guide | Description |
+|-------|-------------|
+| `jx-jinjax` | Jx + JinjaX components |
+| `sse` | Server-Sent Events + HTMX |
+| `formidable` | Form handling |
+| `sqlmodel` | Async database patterns |
+| `faststream` | Event streaming |
 
 ## Quick Start
 
 ```bash
-# Clone and install
 uv sync
-
-# Run dev server
-uv run uvicorn app.main:app --reload
-
-# Quality checks (run before commits)
-uv run ruff format .
-uv run ruff check . --fix
-uv run ty check src tests
-uv run pytest -v
+uv run task check  # format + lint + typecheck + test
+uv run task dev    # start dev server
 ```
 
-## References
+## Setup
 
-- [Jx](https://github.com/jpsca/jx)
-- [JinjaX](https://github.com/jpsca/jinjax)
-- [HTMX](https://htmx.org)
-- [Formidable](https://github.com/jpsca/formidable)
-- [FastStream](https://faststream.airt.ai)
-- [FastAPI](https://fastapi.tiangolo.com)
-- [SQLModel](https://sqlmodel.tiangolo.com)
-- [uv](https://github.com/astral-sh/uv)
-- [ruff](https://github.com/astral-sh/ruff)
+```bash
+# Initialize skills for an agent
+uv run scripts/agent.py init claude
 
-## License
+# Add specific skill
+uv run scripts/agent.py add skill pipeline
 
-MIT
+# List available
+uv run scripts/agent.py list
+
+# Check status
+uv run scripts/agent.py status
+```
+
+> **Note**: On OneDrive, use `uv run --no-cache` if you see hardlink errors.
+
