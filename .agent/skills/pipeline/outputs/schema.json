@@ -1,0 +1,242 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PIPELINE_STATE",
+  "description": "Structured state for pipeline handoff between steps",
+  "type": "object",
+  "required": [
+    "goal",
+    "mode",
+    "branch",
+    "next_step"
+  ],
+  "properties": {
+    "goal": {
+      "type": "string",
+      "description": "One-line goal description"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "economy",
+        "interactive"
+      ],
+      "description": "Current execution mode"
+    },
+    "branch": {
+      "type": "string",
+      "description": "Git branch name (e.g., feat/add-login)"
+    },
+    "base_branch": {
+      "type": "string",
+      "description": "Base branch (main/master/develop)"
+    },
+    "scope": {
+      "type": "string",
+      "description": "Affected areas of the codebase"
+    },
+    "files_touched": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of files modified"
+    },
+    "files_created": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of new files created"
+    },
+    "files_deleted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of files deleted"
+    },
+    "commands_run": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Commands executed during this step"
+    },
+    "test_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "pass",
+        "fail",
+        "skipped"
+      ],
+      "description": "Current test status"
+    },
+    "lint_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "pass",
+        "fail",
+        "skipped"
+      ],
+      "description": "Lint/format status"
+    },
+    "typecheck_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "pass",
+        "fail",
+        "skipped",
+        "not_applicable"
+      ],
+      "description": "Type checking status"
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Identified risks"
+    },
+    "review_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "must_fix",
+              "should_fix",
+              "nice_to_have"
+            ]
+          },
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer"
+          },
+          "resolved": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Issues found during review"
+    },
+    "tests_added": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Test files added"
+    },
+    "commits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Commits made"
+    },
+    "pr": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "description": "PR details when created"
+    },
+    "current_step": {
+      "type": "string",
+      "description": "Current step being executed"
+    },
+    "next_step": {
+      "type": "string",
+      "description": "Next step to execute"
+    },
+    "step_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "skipped",
+              "failed"
+            ]
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "History of completed steps"
+    },
+    "stack": {
+      "type": "object",
+      "properties": {
+        "detected": {
+          "type": "string"
+        },
+        "package_manager": {
+          "type": "string"
+        },
+        "test_command": {
+          "type": "string"
+        },
+        "lint_command": {
+          "type": "string"
+        },
+        "format_command": {
+          "type": "string"
+        },
+        "typecheck_command": {
+          "type": "string"
+        }
+      },
+      "description": "Detected stack and commands"
+    }
+  }
+}

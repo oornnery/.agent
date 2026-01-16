@@ -4,31 +4,98 @@ AI coding agent instructions for Python projects with FastAPI, Jx/JinjaX, HTMX, 
 
 ## Structure
 
-```bash
+```
 .agent/
-├── rules/           # Instruction files with frontmatter
+├── agents/              # Specialized subagents
+│   ├── runner.md
+│   ├── reviewer.md
+│   ├── tester.md
+│   └── researcher.md
+├── rules/               # Instruction files with frontmatter
 │   ├── 00-scope.md
+│   ├── 01-second-order.md
 │   ├── 10-project-modes.md
 │   ├── 20-tooling-workflows.md
 │   ├── 30-architecture-boundaries.md
 │   ├── 40-html-first-jx-htmx.md
-│   ├── 41-design-system.md
-│   ├── 42-animations.md
-│   ├── 43-ui-components.md
-│   ├── 44-pages-routes.md
-│   ├── 45-api-endpoints.md
-│   ├── 46-security.md
-│   ├── 47-rate-limiting.md
-│   ├── 48-sse-htmx.md
-│   ├── 49-bff-pattern.md
-│   ├── 50-forms-formidable.md
-│   ├── 55-faststream.md
-│   ├── 60-db-sqlmodel-async.md
-│   ├── 70-python-style.md
-│   ├── 80-testing.md
+│   ├── ... (frontend, backend, realtime)
 │   └── 90-agent-protocol.md
-└── prompts/
-    └── generate-agent-instructions.prompt.md
+├── skills/              # Domain-specific capabilities
+│   ├── pipeline/        # Feature → PR workflow
+│   │   ├── SKILL.md
+│   │   ├── steps/       # 10 pipeline steps
+│   │   ├── stacks/      # Stack-specific guides
+│   │   ├── templates/   # PR, commit templates
+│   │   └── outputs/     # Schema definitions
+│   ├── handoff/         # Context management
+│   ├── explorer/        # Codebase analysis
+│   ├── code-review/     # Review patterns
+│   ├── git-workflow/    # Version control
+│   └── test-runner/     # Test execution
+├── prompts/             # System prompts
+├── workflows/           # Orchestrated flows
+└── scripts/             # Shell utilities
+    └── agent.sh         # Setup & management
+```
+
+## Agent Skills Stack
+
+All AI coding agents share the same skill definitions via symlinks.
+
+| Agent        | Skill Path         |
+| ------------ | ------------------ |
+| OpenCode     | `.opencode/skill/` |
+| Claude Code  | `.claude/skills/`  |
+| Codex        | `.codex/skills/`   |
+| Cursor       | `.cursor/skills/`  |
+| Amp          | `.agents/skills/`  |
+| Antigravity  | `.agent/skills/`   |
+| Copilot      | `.copilot/skills/` |
+
+### Setup
+
+```bash
+# Initialize all skills for an agent
+./scripts/agent.sh init claude
+
+# Initialize only specific skills
+./scripts/agent.sh init claude --skills pipeline,handoff,test-runner
+
+# Initialize with specific stack
+./scripts/agent.sh init claude --skills pipeline --stack python
+
+# Add a single skill
+./scripts/agent.sh add skill pipeline
+
+# List available skills
+./scripts/agent.sh list skills
+
+# Check status
+./scripts/agent.sh status
+```
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `pipeline` | 10-step autonomous workflow (feature → PR) |
+| `handoff` | Context management and session transfer |
+| `explorer` | Read-only codebase analysis |
+| `code-review` | Self-review patterns and checklists |
+| `git-workflow` | Branch, commit, PR conventions |
+| `test-runner` | Test execution and coverage |
+
+### Pipeline Workflow
+
+```bash
+# Full autonomous mode
+/pipeline --auto add user authentication
+
+# Economy mode (minimal changes)
+/pipeline --economy fix typo in README
+
+# Interactive mode (checkpoints)
+/pipeline --interactive refactor payment system
 ```
 
 ## Tech Stack
@@ -47,64 +114,6 @@ AI coding agent instructions for Python projects with FastAPI, Jx/JinjaX, HTMX, 
 | Typecheck       | ty               |
 | Tests           | pytest           |
 | Events          | FastStream       |
-
-## Rules Index
-
-### Core (always apply)
-
-- **00-scope** — Atomic changes, KISS, no hallucinating paths
-- **90-agent-protocol** — Safety rules for AI agents
-
-### Project Structure
-
-- **10-project-modes** — App / Package / Scripts / Tools patterns
-- **30-architecture-boundaries** — Edges / Core / Infra layers
-
-### Tooling
-
-- **20-tooling-workflows** — uv, ruff, ty, pytest commands
-- **80-testing** — pytest guidelines
-
-### Web Stack (HTML-first)
-
-- **40-html-first-jx-htmx** — Jx components + HTMX patterns
-- **41-design-system** — Colors, typography, breakpoints
-- **42-animations** — Keyframes, transitions, loading states
-- **43-ui-components** — Button, Card, Input, Tag, Icon, Navbar
-- **44-pages-routes** — Page structure + FastAPI routing
-- **45-api-endpoints** — REST API patterns
-- **50-forms-formidable** — Formidable + HTMX forms
-
-### Security & Performance
-
-- **46-security** — OWASP headers, JWT, HTMX validation
-- **47-rate-limiting** — slowapi limits
-
-### Real-time & Events
-
-- **48-sse-htmx** — Server-Sent Events + HTMX
-- **49-bff-pattern** — Backend for Frontend
-- **55-faststream** — Event-driven microservices
-
-### Data
-
-- **60-db-sqlmodel-async** — SQLModel async patterns
-- **70-python-style** — Coding conventions
-
-## Rule File Format
-
-Each rule file uses YAML frontmatter:
-
-```yaml
----
-name: rule-name
-description: When to use this rule...
----
-
-# Rule Title
-
-Content with examples...
-```
 
 ## Quick Start
 
