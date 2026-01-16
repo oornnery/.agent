@@ -38,15 +38,53 @@ AGENT_ROOT = SCRIPT_DIR.parent
 SOURCE_SKILLS = AGENT_ROOT / ".agent" / "skills"
 SOURCE_STACKS = AGENT_ROOT / ".agent" / "stacks"
 
-AGENTS: dict[str, str] = {
-    "opencode": ".opencode/skill",
-    "claude": ".claude/skills",
-    "codex": ".codex/skills",
-    "cursor": ".cursor/skills",
-    "amp": ".agents/skills",
-    "antigravity": ".agent/skills",
-    "copilot": ".copilot/skills",
+AGENT_CONFIGS: dict[str, dict] = {
+    "opencode": {
+        "path": ".opencode/skill",
+        "instructions_file": None,
+        "rules_file": None,
+        "description": "OpenCode AI editor",
+    },
+    "claude": {
+        "path": ".claude/skills",
+        "instructions_file": "CLAUDE.md",
+        "rules_file": ".claude/settings.json",
+        "description": "Claude Code (Anthropic)",
+    },
+    "codex": {
+        "path": ".codex/skills",
+        "instructions_file": "AGENTS.md",
+        "rules_file": None,
+        "description": "OpenAI Codex CLI",
+    },
+    "cursor": {
+        "path": ".cursor/skills",
+        "instructions_file": ".cursorrules",
+        "rules_file": ".cursor/settings.json",
+        "description": "Cursor AI editor",
+    },
+    "amp": {
+        "path": ".agents/skills",
+        "instructions_file": "AGENTS.md",
+        "rules_file": None,
+        "description": "Amp (Sourcegraph)",
+    },
+    "antigravity": {
+        "path": ".agent/skills",
+        "instructions_file": "GEMINI.md",
+        "rules_file": None,
+        "description": "Gemini CLI (Google)",
+    },
+    "copilot": {
+        "path": ".copilot/skills",
+        "instructions_file": ".github/copilot-instructions.md",
+        "rules_file": None,
+        "description": "GitHub Copilot",
+    },
 }
+
+# Backward compatibility
+AGENTS: dict[str, str] = {k: v["path"] for k, v in AGENT_CONFIGS.items()}
 
 SKILLS: dict[str, str] = {
     "pipeline": "End-to-end dev workflow (feature → PR)",
@@ -231,6 +269,32 @@ def status():
         else:
             status = "[red]✗ not setup[/red]"
         table.add_row(agent, path, status)
+
+    console.print(table)
+
+
+@app.command()
+def env(
+    agent: Annotated[str | None, typer.Argument(help="Agent name (optional)")] = None,
+):
+    """Show environment configuration for agents."""
+    if agent and agent not in AGENT_CONFIGS:
+        rprint(f"[red]✗[/red] Unknown agent: {agent}")
+        rprint(f"[dim]Available: {', '.join(AGENT_CONFIGS.keys())}[/dim]")
+        raise typer.Exit(1)
+
+    agents_to_show = [agent] if agent else list(AGENT_CONFIGS.keys())
+
+    table = Table(title="Agent Environment Configuration", show_header=True)
+    table.add_column("Agent", style="magenta")
+    table.add_column("Skills Path", style="cyan")
+    table.add_column("Instructions File", style="green")
+    table.add_column("Description")
+
+    for name in sorted(agents_to_show):
+        config = AGENT_CONFIGS[name]
+        instructions = config["instructions_file"] or "—"
+        table.add_row(name, config["path"], instructions, config["description"])
 
     console.print(table)
 

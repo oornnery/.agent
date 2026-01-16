@@ -3,6 +3,28 @@
 ## Goal
 Map the current codebase relevant to the goal, find the best insertion points, and identify risks.
 
+## RLM Strategy: MAP → DRILL → EXEC
+
+### 1. MAP Phase
+Build a lightweight index before reading files:
+- List directories/modules related to the goal (glob/find)
+- Search for patterns (grep for classes, functions, routes)
+- **Output**: candidate files list with brief descriptions
+
+### 2. DRILL Phase
+Open only what's necessary:
+- Read 80-200 lines max per file chunk
+- Focus on signatures, not implementations
+- Follow imports only if directly relevant
+- **Output**: specific line ranges + findings with pointers
+
+### 3. EXEC Phase
+Defer to Step 02 (Plan) with:
+- Precise touch points (file:line)
+- Minimal context needed for implementation
+
+> **Anti-Pattern**: Opening 15 files "because they might be relevant"
+
 ## What to Inspect
 
 ### 1. Entrypoints

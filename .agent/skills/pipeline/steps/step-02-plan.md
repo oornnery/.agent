@@ -3,6 +3,28 @@
 ## Goal
 Produce a plan that is safe, testable, and decomposed into small commits.
 
+## RLM Context Budget
+
+Before planning, verify:
+- [ ] Analysis used MAP → DRILL (not brute-force file reading)
+- [ ] Touch points have precise line ranges
+- [ ] No more than 5-10 files in immediate scope
+
+If scope is too large, decompose into subtasks first.
+
+## Subtask Decomposition
+
+For complex features:
+
+| Subtask | Owner | Scope | Output |
+|---------|-------|-------|--------|
+| Research patterns | researcher | Read-only | Patterns report |
+| Core implementation | runner | src/core/* | Working code |
+| Tests | tester | tests/* | Test coverage |
+| Review | reviewer | All changes | Issues list |
+
+Each subtask runs with **isolated context** (only load what's needed).
+
 ## Plan Structure
 
 ### 1. Approach (1 paragraph)
