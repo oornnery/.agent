@@ -81,28 +81,21 @@ AI coding agent instructions for Python projects with FastAPI, Jx/JinjaX, HTMX, 
 | `sqlmodel` | Async database patterns |
 | `faststream` | Event streaming |
 
-## Quick Start
-
-```bash
-uv sync
-uv run task check  # format + lint + typecheck + test
-uv run task dev    # start dev server
-```
 
 ## Setup
 
 ```bash
 # Initialize skills for an agent
-uv run scripts/agent.py init claude
+uv run agent.py init claude
 
 # Add specific skill
-uv run scripts/agent.py add skill pipeline
+uv run agent.py add skill pipeline
 
 # List available
-uv run scripts/agent.py list
+uv run agent.py list
 
 # Check status
-uv run scripts/agent.py status
+uv run agent.py status
 ```
 
 > **Note**: Use `uv run --no-cache` if you see hardlink errors.
