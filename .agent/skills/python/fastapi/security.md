@@ -139,16 +139,16 @@ if settings.environment == "production":
 
 ## Summary
 
-| Feature          | Description                                      |
-|------------------|--------------------------------------------------|
-| OWASP Headers    | X-Content-Type-Options, X-Frame-Options, X-XSS  |
-| CSP              | Content Security Policy (strict in production)  |
-| CORS             | Configurable allowed origins                     |
-| HTTPS Redirect   | Automatic redirect in production                 |
-| JWT Auth         | Secure cookie-based authentication               |
-| Rate Limiting    | slowapi with per-endpoint limits                 |
-| HTMX Validation  | Origin validation for HTMX requests              |
-| Input Validation | Pydantic models for all inputs                   |
+| Feature          | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| OWASP Headers    | X-Content-Type-Options, X-Frame-Options, X-XSS |
+| CSP              | Content Security Policy (strict in production) |
+| CORS             | Configurable allowed origins                   |
+| HTTPS Redirect   | Automatic redirect in production               |
+| JWT Auth         | Secure cookie-based authentication             |
+| Rate Limiting    | slowapi with per-endpoint limits               |
+| HTMX Validation  | Origin validation for HTMX requests            |
+| Input Validation | Pydantic models for all inputs                 |
 
 ## JWT Auth (cookie-based)
 

@@ -333,36 +333,36 @@ Maintain route docs with tables in this format.
 ```md
 ## Public Routes
 
-| Method | Route | Component | Layout | Auth | Response | Data Source | Description |
-|---|---|---|---|---|---|---|---|
-| GET | / | pages/Home | Public | public | full-page HTML | post_service.list_featured | Landing page |
-| GET | /projects | pages/Projects | Public | public | full-page HTML | project_service.list_published | Projects list |
-| GET | /projects/{project_id} | pages/ProjectDetail | Public | public | full-page HTML | project_service.get_by_id | Project details |
+| Method | Route                  | Component           | Layout | Auth   | Response       | Data Source                    | Description     |
+| ------ | ---------------------- | ------------------- | ------ | ------ | -------------- | ------------------------------ | --------------- |
+| GET    | /                      | pages/Home          | Public | public | full-page HTML | post_service.list_featured     | Landing page    |
+| GET    | /projects              | pages/Projects      | Public | public | full-page HTML | project_service.list_published | Projects list   |
+| GET    | /projects/{project_id} | pages/ProjectDetail | Public | public | full-page HTML | project_service.get_by_id      | Project details |
 ```
 
 #### Example (Public + Admin + Partials)
 
 ##### Public Routes
 
-| Method | Route | Component | Layout | Auth | Response | Data Source | Description |
-|---|---|---|---|---|---|---|---|
-| GET | `/` | `pages/Home` | `Public` | public | full-page HTML | `home_service.get_context` | Landing page |
-| GET | `/blog` | `pages/Blog` | `Public` | public | full-page HTML | `post_service.list_published` | Blog list |
-| GET | `/blog/{slug}` | `pages/PostDetail` | `Public` | public | full-page HTML | `post_service.get_by_slug` | Blog post detail |
+| Method | Route          | Component          | Layout   | Auth   | Response       | Data Source                   | Description      |
+| ------ | -------------- | ------------------ | -------- | ------ | -------------- | ----------------------------- | ---------------- |
+| GET    | `/`            | `pages/Home`       | `Public` | public | full-page HTML | `home_service.get_context`    | Landing page     |
+| GET    | `/blog`        | `pages/Blog`       | `Public` | public | full-page HTML | `post_service.list_published` | Blog list        |
+| GET    | `/blog/{slug}` | `pages/PostDetail` | `Public` | public | full-page HTML | `post_service.get_by_slug`    | Blog post detail |
 
 ##### Admin Routes
 
-| Method | Route | Component | Layout | Auth | Response | Data Source | Description |
-|---|---|---|---|---|---|---|---|
-| GET | `/admin` | `admin/Dashboard` | `Admin` | required | full-page HTML | `analytics_service.dashboard` | Admin overview |
-| GET | `/admin/blog` | `admin/BlogAdmin` | `Admin` | required | full-page HTML | `post_service.list_all` | Blog management |
+| Method | Route         | Component         | Layout  | Auth     | Response       | Data Source                   | Description     |
+| ------ | ------------- | ----------------- | ------- | -------- | -------------- | ----------------------------- | --------------- |
+| GET    | `/admin`      | `admin/Dashboard` | `Admin` | required | full-page HTML | `analytics_service.dashboard` | Admin overview  |
+| GET    | `/admin/blog` | `admin/BlogAdmin` | `Admin` | required | full-page HTML | `post_service.list_all`       | Blog management |
 
 ##### Partial Routes (HTMX)
 
-| Method | Route | Component | Layout | Auth | Response | Data Source | Description | HTMX Target | Swap |
-|---|---|---|---|---|---|---|---|---|---|
-| GET | `/partials/project-cards?page={n}` | `partials/ProjectCards` | n/a | public | partial HTML | `project_service.list_page` | Infinite scroll cards | `#project-grid` | `beforeend` |
-| POST | `/contact/submit` | `partials/ContactForm` or `partials/ContactSuccess` | n/a | public | partial HTML | `contact_service.send_message` | Form validation + submit | `#contact-result` | `innerHTML` |
+| Method | Route                              | Component                                           | Layout | Auth   | Response     | Data Source                    | Description              | HTMX Target       | Swap        |
+| ------ | ---------------------------------- | --------------------------------------------------- | ------ | ------ | ------------ | ------------------------------ | ------------------------ | ----------------- | ----------- |
+| GET    | `/partials/project-cards?page={n}` | `partials/ProjectCards`                             | n/a    | public | partial HTML | `project_service.list_page`    | Infinite scroll cards    | `#project-grid`   | `beforeend` |
+| POST   | `/contact/submit`                  | `partials/ContactForm` or `partials/ContactSuccess` | n/a    | public | partial HTML | `contact_service.send_message` | Form validation + submit | `#contact-result` | `innerHTML` |
 
 ### Naming and Mapping Rules
 

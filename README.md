@@ -11,6 +11,7 @@ Organization of the coding-agent knowledge base, clearly separated into:
 
 ```text
 .agent/
+├── .rumdl.toml              # Markdown lint/format config
 ├── instructions/
 │   └── rules/                # Always-on rules
 ├── settings.local.json       # Local permissions/memory
@@ -69,6 +70,8 @@ Canonical source: `.agent/agents/README.md`
 
 - Stack-specific commands are canonical in stack skills.
 - Validation orchestration is canonical in `.agent/skills/testing/SKILL.md`.
+- Markdown lint/format uses `uvx rumdl` with repo config in `.rumdl.toml`.
+- Table formatting is enabled via `MD060` (aligned table columns).
 - Code review is canonical in `.agent/instructions/rules/07-code-review.md`.
 - Handoff/session transfer is canonical in `.agent/instructions/rules/06-handoff.md`.
 - Context mapping is canonical in `.agent/instructions/rules/08-context-map.md`.

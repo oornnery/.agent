@@ -11,40 +11,40 @@ Stack: [Tailwind CSS](https://tailwindcss.com/) + [HTMX](https://htmx.org/) + [A
 
 Pick ONE neutral and use it everywhere. Recommended: **Zinc**.
 
-| Role              | Light tokens             | Dark tokens              |
-|-------------------|--------------------------|--------------------------|
-| Page background   | `{neutral}-50`           | `{neutral}-950`          |
-| Surface (card)    | `white`                  | `{neutral}-950`          |
-| Elevated surface  | `white/80` (translucent) | `{neutral}-950/80`       |
-| Primary text      | `{neutral}-900`          | `{neutral}-50` or `100`  |
-| Secondary text    | `{neutral}-600`          | `{neutral}-300` or `400` |
-| Muted text        | `{neutral}-500`          | `{neutral}-400`          |
-| Borders           | `{neutral}-200`          | `{neutral}-800`          |
-| Dividers          | `{neutral}-200`          | `{neutral}-800`          |
-| Hover bg          | `{neutral}-100`          | `{neutral}-900`          |
-| Disabled          | `opacity-50`             | `opacity-50`             |
+| Role             | Light tokens             | Dark tokens              |
+| ---------------- | ------------------------ | ------------------------ |
+| Page background  | `{neutral}-50`           | `{neutral}-950`          |
+| Surface (card)   | `white`                  | `{neutral}-950`          |
+| Elevated surface | `white/80` (translucent) | `{neutral}-950/80`       |
+| Primary text     | `{neutral}-900`          | `{neutral}-50` or `100`  |
+| Secondary text   | `{neutral}-600`          | `{neutral}-300` or `400` |
+| Muted text       | `{neutral}-500`          | `{neutral}-400`          |
+| Borders          | `{neutral}-200`          | `{neutral}-800`          |
+| Dividers         | `{neutral}-200`          | `{neutral}-800`          |
+| Hover bg         | `{neutral}-100`          | `{neutral}-900`          |
+| Disabled         | `opacity-50`             | `opacity-50`             |
 
 ### Semantic Colors
 
 Each semantic color follows the same pattern:
 
-| Tone      | Color   | Light bg        | Light text      | Light ring      | Dark bg              | Dark text       | Dark ring       |
-|-----------|---------|-----------------|-----------------|-----------------|----------------------|-----------------|-----------------|
-| Success   | Emerald | `emerald-50`    | `emerald-800`   | `emerald-200`   | `emerald-900/30`     | `emerald-200`   | `emerald-800`   |
-| Danger    | Rose    | `rose-50`       | `rose-800`      | `rose-200`      | `rose-900/30`        | `rose-200`      | `rose-800`      |
-| Warning   | Amber   | `amber-50`      | `amber-800`     | `amber-200`     | `amber-900/30`       | `amber-200`     | `amber-800`     |
-| Info      | Blue    | `blue-50`       | `blue-800`      | `blue-200`      | `blue-900/30`        | `blue-200`      | `blue-800`      |
-| Neutral   | Zinc    | `zinc-50`       | `zinc-700`      | `zinc-200`      | `zinc-900`           | `zinc-200`      | `zinc-700`      |
+| Tone    | Color   | Light bg     | Light text    | Light ring    | Dark bg          | Dark text     | Dark ring     |
+| ------- | ------- | ------------ | ------------- | ------------- | ---------------- | ------------- | ------------- |
+| Success | Emerald | `emerald-50` | `emerald-800` | `emerald-200` | `emerald-900/30` | `emerald-200` | `emerald-800` |
+| Danger  | Rose    | `rose-50`    | `rose-800`    | `rose-200`    | `rose-900/30`    | `rose-200`    | `rose-800`    |
+| Warning | Amber   | `amber-50`   | `amber-800`   | `amber-200`   | `amber-900/30`   | `amber-200`   | `amber-800`   |
+| Info    | Blue    | `blue-50`    | `blue-800`    | `blue-200`    | `blue-900/30`    | `blue-200`    | `blue-800`    |
+| Neutral | Zinc    | `zinc-50`    | `zinc-700`    | `zinc-200`    | `zinc-900`       | `zinc-200`    | `zinc-700`    |
 
 **Pattern**: Dark backgrounds use `{color}-900/30` (30% opacity) for subtlety.
 
 ### Status Indicators
 
-| State   | Light           | Dark            |
-|---------|-----------------|-----------------|
-| OK/Up   | `emerald-500`   | `emerald-400`   |
-| Down    | `rose-500`      | `rose-400`      |
-| Warning | `amber-500`     | `amber-400`     |
+| State   | Light         | Dark          |
+| ------- | ------------- | ------------- |
+| OK/Up   | `emerald-500` | `emerald-400` |
+| Down    | `rose-500`    | `rose-400`    |
+| Warning | `amber-500`   | `amber-400`   |
 
 ## 3. Spacing System
 
@@ -58,49 +58,49 @@ All spacing values are multiples of 4px via Tailwind's default scale.
 max-w-{size} mx-auto w-full px-4
 ```
 
-| Container    | Width  | Use                     |
-|--------------|--------|--------------------------|
-| `max-w-sm`   | 384px  | Auth forms, small dialogs|
-| `max-w-md`   | 448px  | Centered error cards     |
-| `max-w-lg`   | 512px  | Modals                   |
-| `max-w-2xl`  | 672px  | Blog content             |
-| `max-w-4xl`  | 896px  | Dashboard content        |
-| `max-w-6xl`  | 1152px | Full-width app layouts   |
+| Container   | Width  | Use                       |
+| ----------- | ------ | ------------------------- |
+| `max-w-sm`  | 384px  | Auth forms, small dialogs |
+| `max-w-md`  | 448px  | Centered error cards      |
+| `max-w-lg`  | 512px  | Modals                    |
+| `max-w-2xl` | 672px  | Blog content              |
+| `max-w-4xl` | 896px  | Dashboard content         |
+| `max-w-6xl` | 1152px | Full-width app layouts    |
 
 ### Padding Conventions
 
-| Context          | Token   | Value |
-|------------------|---------|-------|
-| Page horizontal  | `px-4`  | 16px  |
-| Card body        | `px-5 py-4` | 20/16px |
-| Button sm        | `px-3`  | 12px  |
-| Button md        | `px-4`  | 16px  |
-| Button lg        | `px-5`  | 20px  |
-| Badge            | `px-2 py-0.5` | 8/2px |
-| Navbar           | `py-3`  | 12px  |
-| Footer           | `py-4`  | 16px  |
-| Content area     | `py-6`  | 24px  |
+| Context         | Token         | Value   |
+| --------------- | ------------- | ------- |
+| Page horizontal | `px-4`        | 16px    |
+| Card body       | `px-5 py-4`   | 20/16px |
+| Button sm       | `px-3`        | 12px    |
+| Button md       | `px-4`        | 16px    |
+| Button lg       | `px-5`        | 20px    |
+| Badge           | `px-2 py-0.5` | 8/2px   |
+| Navbar          | `py-3`        | 12px    |
+| Footer          | `py-4`        | 16px    |
+| Content area    | `py-6`        | 24px    |
 
 ### Gap Conventions
 
-| Token   | Value | Use                              |
-|---------|-------|----------------------------------|
-| `gap-1` | 4px   | Inline items (nav, icon+text)    |
-| `gap-2` | 8px   | Button groups, breadcrumbs       |
-| `gap-3` | 12px  | Logo+brand, form fields          |
-| `gap-4` | 16px  | Card grid items                  |
-| `gap-6` | 24px  | Page sections                    |
-| `gap-8` | 32px  | Major layout sections            |
+| Token   | Value | Use                           |
+| ------- | ----- | ----------------------------- |
+| `gap-1` | 4px   | Inline items (nav, icon+text) |
+| `gap-2` | 8px   | Button groups, breadcrumbs    |
+| `gap-3` | 12px  | Logo+brand, form fields       |
+| `gap-4` | 16px  | Card grid items               |
+| `gap-6` | 24px  | Page sections                 |
+| `gap-8` | 32px  | Major layout sections         |
 
 ## 5. Shadows
 
-| Token       | Use                    | Elevation  |
-|-------------|------------------------|------------|
-| (none)      | Flat elements          | Ground     |
-| `shadow-sm` | Cards, panels          | Surface    |
-| `shadow-md` | Toasts, floating menus | Floating   |
-| `shadow-lg` | Dropdowns, popovers    | Raised     |
-| `shadow-xl` | Modals, overlays       | Overlay    |
+| Token       | Use                    | Elevation |
+| ----------- | ---------------------- | --------- |
+| (none)      | Flat elements          | Ground    |
+| `shadow-sm` | Cards, panels          | Surface   |
+| `shadow-md` | Toasts, floating menus | Floating  |
+| `shadow-lg` | Dropdowns, popovers    | Raised    |
+| `shadow-xl` | Modals, overlays       | Overlay   |
 
 ```txt
 Ground → Surface (sm) → Floating (md) → Raised (lg) → Overlay (xl)
@@ -108,13 +108,13 @@ Ground → Surface (sm) → Floating (md) → Raised (lg) → Overlay (xl)
 
 ## 7. Z-Index Layers
 
-| Layer     | Z-Index | Elements                |
-|-----------|---------|--------------------------|
-| Base      | auto    | Page content             |
-| Dropdown  | `z-10`  | Dropdowns, popovers      |
-| Sticky    | `z-30`  | Sticky sidebars          |
-| Navbar    | `z-40`  | Fixed/sticky navbar      |
-| Overlay   | `z-50`  | Modals, toasts, drawers  |
+| Layer    | Z-Index | Elements                |
+| -------- | ------- | ----------------------- |
+| Base     | auto    | Page content            |
+| Dropdown | `z-10`  | Dropdowns, popovers     |
+| Sticky   | `z-30`  | Sticky sidebars         |
+| Navbar   | `z-40`  | Fixed/sticky navbar     |
+| Overlay  | `z-50`  | Modals, toasts, drawers |
 
 ## 9. Dark Mode
 
@@ -129,16 +129,16 @@ Toggle:   Alpine.js x-data on <body>, $watch syncs to <html>
 
 ### Inversion Rules
 
-| Element          | Light → Dark transformation              |
-|------------------|------------------------------------------|
-| Page bg          | `{neutral}-50` → `{neutral}-950`        |
-| Surface bg       | `white` → `{neutral}-950`               |
-| Translucent bg   | `white/80` → `{neutral}-950/80`         |
-| Primary button   | `{neutral}-900` bg → `{neutral}-50` bg  |
-| Semantic bg      | `{color}-50` → `{color}-900/30`         |
-| Borders          | `{neutral}-200` → `{neutral}-800`       |
-| Primary text     | `{neutral}-900` → `{neutral}-50`        |
-| Hover bg         | `{neutral}-100` → `{neutral}-900`       |
+| Element        | Light → Dark transformation            |
+| -------------- | -------------------------------------- |
+| Page bg        | `{neutral}-50` → `{neutral}-950`       |
+| Surface bg     | `white` → `{neutral}-950`              |
+| Translucent bg | `white/80` → `{neutral}-950/80`        |
+| Primary button | `{neutral}-900` bg → `{neutral}-50` bg |
+| Semantic bg    | `{color}-50` → `{color}-900/30`        |
+| Borders        | `{neutral}-200` → `{neutral}-800`      |
+| Primary text   | `{neutral}-900` → `{neutral}-50`       |
+| Hover bg       | `{neutral}-100` → `{neutral}-900`      |
 
 ## 11. Layout Patterns
 
@@ -257,14 +257,14 @@ Dashboard with collapsible nav? → CSS Grid (grid-template-areas)
 
 ## 13. Alpine.js State Patterns
 
-| Pattern    | x-data               | Behavior                               |
-|------------|-----------------------|-----------------------------------------|
-| Dark mode  | `{ dark: false }`    | $watch syncs to html class + localStorage |
-| Modal      | `{ open: true }`     | Escape/backdrop close, x-effect remove |
-| Toast      | `{ show: true }`     | setTimeout auto-dismiss                |
-| Accordion  | `{ open: false }`    | Toggle content, cleanup on close       |
-| Dropdown   | `{ open: false }`    | Click-away close via @click.outside    |
-| Tabs       | `{ tab: 'first' }`  | Show/hide panels, :class binding       |
+| Pattern   | x-data             | Behavior                                  |
+| --------- | ------------------ | ----------------------------------------- |
+| Dark mode | `{ dark: false }`  | $watch syncs to html class + localStorage |
+| Modal     | `{ open: true }`   | Escape/backdrop close, x-effect remove    |
+| Toast     | `{ show: true }`   | setTimeout auto-dismiss                   |
+| Accordion | `{ open: false }`  | Toggle content, cleanup on close          |
+| Dropdown  | `{ open: false }`  | Click-away close via @click.outside       |
+| Tabs      | `{ tab: 'first' }` | Show/hide panels, :class binding          |
 
 ### SSE Lifecycle Pattern
 
@@ -286,29 +286,29 @@ Page leaving → disconnect() → cleanup before DOM replace
 
 ### Dark Theme (default)
 
-| Token        | Value     | Usage                    |
-|--------------|-----------|--------------------------|
-| `--bg`       | `#0b0b0d` | Page background          |
-| `--surface`  | `#121215` | Card/panel backgrounds   |
-| `--surface-2`| `#1a1a1f` | Elevated surfaces        |
-| `--text`     | `#ededed` | Primary text             |
-| `--text-2`   | `#a1a1aa` | Secondary text           |
-| `--text-3`   | `#6b7280` | Muted/placeholder text   |
-| `--border`   | `#1f1f26` | Borders, dividers        |
-| `--accent`   | `#7c7cff` | Primary accent (links)   |
-| `--accent-2` | `#22c55e` | Secondary accent (success)|
-| `--warn`     | `#f59e0b` | Warnings                 |
-| `--danger`   | `#ef4444` | Errors, destructive      |
+| Token         | Value     | Usage                      |
+| ------------- | --------- | -------------------------- |
+| `--bg`        | `#0b0b0d` | Page background            |
+| `--surface`   | `#121215` | Card/panel backgrounds     |
+| `--surface-2` | `#1a1a1f` | Elevated surfaces          |
+| `--text`      | `#ededed` | Primary text               |
+| `--text-2`    | `#a1a1aa` | Secondary text             |
+| `--text-3`    | `#6b7280` | Muted/placeholder text     |
+| `--border`    | `#1f1f26` | Borders, dividers          |
+| `--accent`    | `#7c7cff` | Primary accent (links)     |
+| `--accent-2`  | `#22c55e` | Secondary accent (success) |
+| `--warn`      | `#f59e0b` | Warnings                   |
+| `--danger`    | `#ef4444` | Errors, destructive        |
 
 ### Light Theme
 
-| Token        | Value     |
-|--------------|-----------|
-| `--bg`       | `#fafafa` |
-| `--surface`  | `#ffffff` |
-| `--surface-2`| `#f4f4f5` |
-| `--text`     | `#0f172a` |
-| `--accent`   | `#4f46e5` |
+| Token         | Value     |
+| ------------- | --------- |
+| `--bg`        | `#fafafa` |
+| `--surface`   | `#ffffff` |
+| `--surface-2` | `#f4f4f5` |
+| `--text`      | `#0f172a` |
+| `--accent`    | `#4f46e5` |
 
 ### CSS implementation (tokens.css)
 
@@ -343,7 +343,7 @@ Page leaving → disconnect() → cleanup before DOM replace
 ## Spacing Scale
 
 | Token       | Value   |
-|-------------|---------|
+| ----------- | ------- |
 | `--space-1` | 0.25rem |
 | `--space-2` | 0.5rem  |
 | `--space-3` | 0.75rem |
@@ -353,7 +353,7 @@ Page leaving → disconnect() → cleanup before DOM replace
 
 ## Shadows
 
-| Token        | Value                              |
-|--------------|------------------------------------|
-| `--shadow-sm`| `0 6px 16px rgba(0,0,0,0.18)`      |
-| `--shadow-md`| `0 10px 30px rgba(0,0,0,0.22)`     |
+| Token         | Value                          |
+| ------------- | ------------------------------ |
+| `--shadow-sm` | `0 6px 16px rgba(0,0,0,0.18)`  |
+| `--shadow-md` | `0 10px 30px rgba(0,0,0,0.22)` |

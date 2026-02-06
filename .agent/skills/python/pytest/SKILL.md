@@ -250,13 +250,13 @@ Guidelines:
 
 ### Common Causes
 
-| Symptom | Likely Cause |
-|---|---|
-| AssertionError | Logic bug |
-| TypeError | Wrong type passed |
-| AttributeError | Missing attribute |
-| Timeout | Infinite loop or slow I/O |
-| Flaky | Race condition |
+| Symptom        | Likely Cause              |
+| -------------- | ------------------------- |
+| AssertionError | Logic bug                 |
+| TypeError      | Wrong type passed         |
+| AttributeError | Missing attribute         |
+| Timeout        | Infinite loop or slow I/O |
+| Flaky          | Race condition            |
 
 ### Fix Strategy
 
@@ -269,11 +269,11 @@ Guidelines:
 
 ## Coverage Guidance
 
-| Type | Target |
-|---|---|
-| Unit | > 80% |
-| Integration | Key flows |
-| E2E | Critical paths |
+| Type        | Target         |
+| ----------- | -------------- |
+| Unit        | > 80%          |
+| Integration | Key flows      |
+| E2E         | Critical paths |
 
 Coverage guardrails:
 

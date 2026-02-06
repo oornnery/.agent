@@ -1,0 +1,9 @@
+# rumdl configuration file
+
+[global]
+disable = ["MD013", "MD041"]
+respect-gitignore = true
+
+[MD060]
+enabled = true
+style = "aligned"

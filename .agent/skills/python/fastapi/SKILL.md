@@ -212,13 +212,13 @@ For each domain, maintain a Markdown table with this contract.
 ```md
 ## <Domain> API
 
-| Method | Path | Summary | Auth | Request | Response | Errors |
-|---|---|---|---|---|---|---|
-| GET | /api/v1/<resource> | List resources | public | query: `ListQuery` | `200` `list[ResourceOut]` | `400` |
-| GET | /api/v1/<resource>/{id} | Get resource by id | public | path: `id:int` | `200` `ResourceOut` | `404` |
-| POST | /api/v1/<resource> | Create resource | required | body: `ResourceCreate` | `201` `ResourceOut` | `400`, `409`, `422` |
-| PUT | /api/v1/<resource>/{id} | Update resource | required | body: `ResourceUpdate` | `200` `ResourceOut` | `404`, `422` |
-| DELETE | /api/v1/<resource>/{id} | Delete resource | required | path: `id:int` | `204` none | `404` |
+| Method | Path                    | Summary            | Auth     | Request                | Response                  | Errors              |
+| ------ | ----------------------- | ------------------ | -------- | ---------------------- | ------------------------- | ------------------- |
+| GET    | /api/v1/<resource>      | List resources     | public   | query: `ListQuery`     | `200` `list[ResourceOut]` | `400`               |
+| GET    | /api/v1/<resource>/{id} | Get resource by id | public   | path: `id:int`         | `200` `ResourceOut`       | `404`               |
+| POST   | /api/v1/<resource>      | Create resource    | required | body: `ResourceCreate` | `201` `ResourceOut`       | `400`, `409`, `422` |
+| PUT    | /api/v1/<resource>/{id} | Update resource    | required | body: `ResourceUpdate` | `200` `ResourceOut`       | `404`, `422`        |
+| DELETE | /api/v1/<resource>/{id} | Delete resource    | required | path: `id:int`         | `204` none                | `404`               |
 ```
 
 ## Endpoint Template

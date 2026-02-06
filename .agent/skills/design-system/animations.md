@@ -7,12 +7,12 @@ description: CSS animations, transitions, and HTMX loading states. Use when addi
 
 ## Keyframes
 
-| Keyframe       | Description                        |
-|----------------|------------------------------------|
-| `fadeUp`       | Fade in + translate up             |
-| `fadeIn`       | Simple opacity fade                |
-| `slideInRight` | Slide in from right                |
-| `scaleIn`      | Scale from 0.95 to 1               |
+| Keyframe       | Description            |
+| -------------- | ---------------------- |
+| `fadeUp`       | Fade in + translate up |
+| `fadeIn`       | Simple opacity fade    |
+| `slideInRight` | Slide in from right    |
+| `scaleIn`      | Scale from 0.95 to 1   |
 
 ### CSS implementation (motion.css)
 
@@ -60,14 +60,14 @@ description: CSS animations, transitions, and HTMX loading states. Use when addi
 
 ## Utility Classes
 
-| Class           | Effect                          |
-|-----------------|---------------------------------|
-| `.t`            | Base transition (all 200ms)     |
-| `.enter`        | Entry animation (fadeUp)        |
-| `.hover-lift`   | Lift on hover (translateY)      |
-| `.hover-scale`  | Scale on hover (1.02)           |
-| `.card-animated`| Card with hover lift + shadow   |
-| `.nav-blur`     | Blur backdrop for navbar        |
+| Class            | Effect                        |
+| ---------------- | ----------------------------- |
+| `.t`             | Base transition (all 200ms)   |
+| `.enter`         | Entry animation (fadeUp)      |
+| `.hover-lift`    | Lift on hover (translateY)    |
+| `.hover-scale`   | Scale on hover (1.02)         |
+| `.card-animated` | Card with hover lift + shadow |
+| `.nav-blur`      | Blur backdrop for navbar      |
 
 ```css
 .t {

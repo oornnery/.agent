@@ -38,21 +38,21 @@ In multi-agent pipeline mode, every step **MUST** end with a valid `PIPELINE_STA
 
 These steps are **blocking gates** in multi-agent mode:
 
-| Step | Gate Type | Agent | Blocking Condition |
-|------|-----------|-------|-------------------|
-| 05-review | Code Review | `reviewer` | Any `must_fix` issue |
-| 08-run-tests | CI Parity | `tester` | Any test/lint/type failure |
+| Step         | Gate Type   | Agent      | Blocking Condition         |
+| ------------ | ----------- | ---------- | -------------------------- |
+| 05-review    | Code Review | `reviewer` | Any `must_fix` issue       |
+| 08-run-tests | CI Parity   | `tester`   | Any test/lint/type failure |
 
 ## Agent Isolation (RLM Recursion)
 
 Each agent has **isolated context** and **cannot** do other agents' jobs:
 
-| Agent | Can | Cannot |
-|-------|-----|--------|
-| `runner` | Edit, Execute, Orchestrate | Review, Test |
-| `reviewer` | Read, Analyze, Report | Edit files |
-| `tester` | Read, Write tests, Run tests | Business logic |
-| `researcher` | Read, Search, Map | Edit anything |
+| Agent        | Can                          | Cannot         |
+| ------------ | ---------------------------- | -------------- |
+| `runner`     | Edit, Execute, Orchestrate   | Review, Test   |
+| `reviewer`   | Read, Analyze, Report        | Edit files     |
+| `tester`     | Read, Write tests, Run tests | Business logic |
+| `researcher` | Read, Search, Map            | Edit anything  |
 
 ## State Preservation
 

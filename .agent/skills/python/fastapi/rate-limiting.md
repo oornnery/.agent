@@ -7,12 +7,12 @@ description: Request rate limiting with slowapi. Use when protecting endpoints f
 
 ## Rate Limits per Endpoint
 
-| Endpoint   | Limit       |
-|------------|-------------|
-| Global     | 60/minute   |
-| Login      | 10/minute   |
-| Register   | 5/minute    |
-| Contact    | 10/minute   |
+| Endpoint | Limit     |
+| -------- | --------- |
+| Global   | 60/minute |
+| Login    | 10/minute |
+| Register | 5/minute  |
+| Contact  | 10/minute |
 
 ---
 

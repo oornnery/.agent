@@ -169,18 +169,18 @@ border-t, max-w-6xl, flex row on sm+
 **Props:** `variant="primary"`, `size="md"`, `href=""`, `type="button"`
 **Renders:** `<a>` if `href`, `<button>` otherwise
 
-| Variant     | Light                          | Dark                            |
-|-------------|--------------------------------|---------------------------------|
-| `primary`   | zinc-900 bg, white text        | zinc-50 bg, zinc-900 text       |
-| `secondary` | zinc-100 bg, zinc-900 text     | zinc-900 bg, zinc-100 text      |
-| `ghost`     | transparent, zinc-700 text     | transparent, zinc-200 text      |
-| `danger`    | rose-600 bg, white text        | rose-500 bg, white text         |
+| Variant     | Light                      | Dark                       |
+| ----------- | -------------------------- | -------------------------- |
+| `primary`   | zinc-900 bg, white text    | zinc-50 bg, zinc-900 text  |
+| `secondary` | zinc-100 bg, zinc-900 text | zinc-900 bg, zinc-100 text |
+| `ghost`     | transparent, zinc-700 text | transparent, zinc-200 text |
+| `danger`    | rose-600 bg, white text    | rose-500 bg, white text    |
 
-| Size | Height | Padding | Font     |
-|------|--------|---------|----------|
-| `sm` | h-9    | px-3    | text-sm  |
-| `md` | h-10   | px-4    | text-sm  |
-| `lg` | h-11   | px-5    | text-base|
+| Size | Height | Padding | Font      |
+| ---- | ------ | ------- | --------- |
+| `sm` | h-9    | px-3    | text-sm   |
+| `md` | h-10   | px-4    | text-sm   |
+| `lg` | h-11   | px-5    | text-base |
 
 ```jinja
 <Button variant="secondary" size="sm" href="/status">View status</Button>
@@ -440,12 +440,12 @@ Key behaviors:
 
 ### Endpoint → Partial Mapping
 
-| Endpoint                 | Renders                   | Swap Strategy       | Target             |
-|--------------------------|---------------------------|---------------------|--------------------|
-| `/healthz/summary`       | HealthSummary.jinja       | `morph:innerHTML`   | `#healthz-summary` |
-| `/healthz/logs`          | Single health check JSON  | —                   | —                  |
-| `/healthz/logs/stream`   | SSE `text/event-stream`   | EventSource (JS)    | Alpine `logs` state|
-| Form responses           | Main HTML + Toast.jinja   | `innerHTML` + OOB   | form target + portal|
+| Endpoint               | Renders                  | Swap Strategy     | Target               |
+| ---------------------- | ------------------------ | ----------------- | -------------------- |
+| `/healthz/summary`     | HealthSummary.jinja      | `morph:innerHTML` | `#healthz-summary`   |
+| `/healthz/logs`        | Single health check JSON | —                 | —                    |
+| `/healthz/logs/stream` | SSE `text/event-stream`  | EventSource (JS)  | Alpine `logs` state  |
+| Form responses         | Main HTML + Toast.jinja  | `innerHTML` + OOB | form target + portal |
 
 ### Morph + Alpine Rules
 
