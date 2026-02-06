@@ -5,7 +5,6 @@ Generic, portable design system for Tailwind CSS projects. Inspired by [shadcn/u
 
 Stack: [Tailwind CSS](https://tailwindcss.com/) + [HTMX](https://htmx.org/) + [Alpine.js](https://alpinejs.dev/) + [Idiomorph](https://github.com/bigskysoftware/idiomorph)
 
-
 ## 1. Color Strategy
 
 ### Neutral Scale
@@ -46,7 +45,6 @@ Each semantic color follows the same pattern:
 | OK/Up   | `emerald-500`   | `emerald-400`   |
 | Down    | `rose-500`      | `rose-400`      |
 | Warning | `amber-500`     | `amber-400`     |
-
 
 ## 3. Spacing System
 
@@ -94,7 +92,6 @@ max-w-{size} mx-auto w-full px-4
 | `gap-6` | 24px  | Page sections                    |
 | `gap-8` | 32px  | Major layout sections            |
 
-
 ## 5. Shadows
 
 | Token       | Use                    | Elevation  |
@@ -109,7 +106,6 @@ max-w-{size} mx-auto w-full px-4
 Ground → Surface (sm) → Floating (md) → Raised (lg) → Overlay (xl)
 ```
 
-
 ## 7. Z-Index Layers
 
 | Layer     | Z-Index | Elements                |
@@ -119,7 +115,6 @@ Ground → Surface (sm) → Floating (md) → Raised (lg) → Overlay (xl)
 | Sticky    | `z-30`  | Sticky sidebars          |
 | Navbar    | `z-40`  | Fixed/sticky navbar      |
 | Overlay   | `z-50`  | Modals, toasts, drawers  |
-
 
 ## 9. Dark Mode
 
@@ -145,7 +140,6 @@ Toggle:   Alpine.js x-data on <body>, $watch syncs to <html>
 | Primary text     | `{neutral}-900` → `{neutral}-50`        |
 | Hover bg         | `{neutral}-100` → `{neutral}-900`       |
 
-
 ## 11. Layout Patterns
 
 ### Page Grid
@@ -169,7 +163,7 @@ Toggle:   Alpine.js x-data on <body>, $watch syncs to <html>
 
 ### Navbar
 
-```
+```text
 sticky top-0 z-40 border-b bg-{surface}/80 backdrop-blur-lg
   └─ max-w-{size} mx-auto px-4
        ├─ Brand (logo/initial + name)
@@ -261,7 +255,6 @@ Content + 2 sidebars?           → CSS Grid (grid-cols responsive breakpoints)
 Dashboard with collapsible nav? → CSS Grid (grid-template-areas)
 ```
 
-
 ## 13. Alpine.js State Patterns
 
 | Pattern    | x-data               | Behavior                               |
@@ -275,7 +268,7 @@ Dashboard with collapsible nav? → CSS Grid (grid-template-areas)
 
 ### SSE Lifecycle Pattern
 
-```
+```text
 User action  → connect()    → new EventSource(url)
                               → onmessage: update state
                               → onerror: disconnect()
@@ -283,13 +276,11 @@ User action  → disconnect() → es.close(), es = null
 Page leaving → disconnect() → cleanup before DOM replace
 ```
 
-
 ---
 
 ## Token Presets (Merged)
 
-
-# Design System
+## Design System
 
 ## Color Palette
 
@@ -349,7 +340,6 @@ Page leaving → disconnect() → cleanup before DOM replace
 }
 ```
 
-
 ## Spacing Scale
 
 | Token       | Value   |
@@ -361,11 +351,9 @@ Page leaving → disconnect() → cleanup before DOM replace
 | `--space-5` | 1.5rem  |
 | `--space-6` | 2rem    |
 
-
 ## Shadows
 
 | Token        | Value                              |
 |--------------|------------------------------------|
 | `--shadow-sm`| `0 6px 16px rgba(0,0,0,0.18)`      |
 | `--shadow-md`| `0 10px 30px rgba(0,0,0,0.22)`     |
-

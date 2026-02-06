@@ -6,11 +6,16 @@ description: Form handling with Formidable and HTMX validation. Use when creatin
 # Forms (Formidable + HTMX)
 
 Pattern:
+
 - Server validates
 - Return partial with errors OR success fragment
 - Use `hx-post` / `hx-trigger="blur"` for field-level validation
 
-**Docs**: https://github.com/jpsca/formidable
+## Documentation
+
+- Formidable: <https://github.com/jpsca/formidable>
+- HTMX Docs: <https://htmx.org/docs/>
+- FastAPI Forms: <https://fastapi.tiangolo.com/tutorial/request-forms/>
 
 ---
 

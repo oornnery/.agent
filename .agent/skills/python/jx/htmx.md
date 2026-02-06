@@ -81,7 +81,7 @@ hx-trigger="custom-event from:body"     <!-- Custom event -->
     hx-indicator="#search-spinner"
     placeholder="{{ placeholder }}"
     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-  
+
   <div id="search-spinner" class="htmx-indicator absolute right-3 top-1/2 -translate-y-1/2">
     <svg class="animate-spin h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -185,9 +185,9 @@ hx-trigger="custom-event from:body"     <!-- Custom event -->
   hx-target="#form-response"
   hx-swap="innerHTML"
   hx-indicator="#form-spinner">
-  
+
   {{ content }}
-  
+
   <div class="flex items-center gap-4 mt-4">
     <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
       Submit

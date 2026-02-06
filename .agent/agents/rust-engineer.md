@@ -2,7 +2,7 @@
 name: rust-engineer
 description: Rust specialist for ownership-safe design, clippy-driven quality, and cargo-based validation workflows.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["rust", "python/test-runner"]
+skills: ["rust", "testing"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
   - ".agent/instructions/rules/02-architecture.md"
@@ -27,7 +27,7 @@ mode: single
 ## Sub-skill Awareness
 
 - Canonical stack guidance: `.agent/skills/rust/SKILL.md`
-- Validation gate support: `.agent/skills/python/test-runner/SKILL.md`
+- Validation gate orchestration: `.agent/skills/testing/SKILL.md`
 - Current Rust model has no additional sub-skills beyond the canonical skill.
 
 ## Boundaries

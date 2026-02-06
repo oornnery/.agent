@@ -2,11 +2,12 @@
 name: platform-engineer
 description: Toolchain and CI specialist for cross-stack build, validation, and workflow reliability.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["python", "python/test-runner", "node", "go", "rust", "git-workflow"]
+skills: ["python", "node", "go", "rust", "testing"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
   - ".agent/instructions/rules/03-tooling.md"
   - ".agent/instructions/rules/04-safe-commands.md"
+  - ".agent/instructions/rules/05-git-workflow.md"
 mode: single
 ---
 

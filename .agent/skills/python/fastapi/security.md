@@ -3,7 +3,6 @@
 
 Comprehensive security reference for FastAPI applications. Covers XSS prevention, CSRF, SQL injection, authentication, password hashing, security headers, rate limiting, file uploads, and OWASP top 10.
 
-
 ## 2. CORS
 
 ```python
@@ -16,7 +15,6 @@ app.add_middleware(
     max_age=3600
 )
 ```
-
 
 ## 4. CSRF Protection
 
@@ -37,7 +35,6 @@ async def contact(request: Request, csrf_protect: CsrfProtect = Depends()):
     ...
 </form>
 ```
-
 
 ## 6. Authentication (JWT)
 
@@ -99,7 +96,6 @@ hashed = password_hash.hash("password")
 is_valid = password_hash.verify("password", hashed)
 ```
 
-
 ## 8. File Upload Validation
 
 ```python
@@ -126,7 +122,6 @@ async def upload(
 
 **Pitfalls**: Validate file MIME via magic numbers, not Content-Type header. Always set file size limits. Never trust the filename.
 
-
 ## 10. HTTPS Enforcement
 
 ```python
@@ -136,13 +131,11 @@ if settings.environment == "production":
     app.add_middleware(HTTPSRedirectMiddleware)
 ```
 
-
 ---
 
 ## Security Summary Checklist (Merged)
 
-
-# Security Features
+## Security Features
 
 ## Summary
 
@@ -156,7 +149,6 @@ if settings.environment == "production":
 | Rate Limiting    | slowapi with per-endpoint limits                 |
 | HTMX Validation  | Origin validation for HTMX requests              |
 | Input Validation | Pydantic models for all inputs                   |
-
 
 ## JWT Auth (cookie-based)
 
@@ -176,4 +168,3 @@ async def get_current_user(request: Request) -> User | None:
     payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
     return await user_service.get_by_id(int(payload.get("sub")))
 ```
-

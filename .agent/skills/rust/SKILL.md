@@ -20,9 +20,11 @@ Use this skill for Rust project workflows managed by cargo.
 - Prefer `cargo check` for fast iteration and `cargo test` for validation
 
 ## Guide
-# Stack: Rust
+
+## Stack: Rust
 
 ## Package Manager
+
 - **Tool**: cargo
 - **Lock file**: `Cargo.lock`
 - **Config**: `Cargo.toml`
@@ -30,30 +32,35 @@ Use this skill for Rust project workflows managed by cargo.
 ## Commands
 
 ### Initialize Project
+
 ```bash
 cargo new project-name
 cargo init
 ```
 
 ### Add Dependencies
+
 ```bash
 cargo add <crate>
 cargo add --dev <crate>
 ```
 
 ### Format
+
 ```bash
 cargo fmt
 cargo fmt --check
 ```
 
 ### Lint
+
 ```bash
 cargo clippy
 cargo clippy -- -D warnings
 ```
 
 ### Typecheck / Build
+
 ```bash
 cargo check
 cargo build
@@ -61,6 +68,7 @@ cargo build --release
 ```
 
 ### Run Tests
+
 ```bash
 # Quick run
 cargo test
@@ -76,6 +84,7 @@ cargo test --doc
 ```
 
 ### Run Application
+
 ```bash
 cargo run
 cargo run --release
@@ -102,7 +111,7 @@ jobs:
 
 ## File Structure
 
-```
+```text
 project/
 ├── Cargo.toml
 ├── Cargo.lock

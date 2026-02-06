@@ -44,6 +44,7 @@ Commands the agent can run safely. Organized by category with cross-platform equ
 | `jq` | `ConvertFrom-Json` | JSON processing |
 
 ## Network (Local Only)
+
 ```bash
 # ✓ Safe patterns
 curl http://localhost:*
@@ -57,6 +58,7 @@ Invoke-RestMethod http://127.0.0.1:3000/api
 ```
 
 ## Package Managers
+
 ```bash
 # Python
 uv, uvx, pip list, pip show
@@ -72,6 +74,7 @@ cargo build, cargo test, cargo run, cargo check
 ```
 
 ## Build & Test
+
 ```bash
 make, task, just
 pytest, vitest, jest, go test, cargo test
@@ -79,6 +82,7 @@ ruff, eslint, prettier, ty, mypy
 ```
 
 ## Git
+
 ```bash
 git status, git diff, git log, git branch
 git add, git commit, git push, git pull
@@ -97,6 +101,7 @@ git add, git commit, git push, git pull
 | `which` | `Get-Command` | Find command path |
 
 ## Forbidden Commands
+
 ```bash
 # ❌ Never run (any platform)
 sudo, su, chmod 777, rm -rf /

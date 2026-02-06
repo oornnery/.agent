@@ -2,7 +2,7 @@
 name: go-engineer
 description: Go specialist for idiomatic package design, error handling, and module-aware validation workflows.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["go", "python/test-runner"]
+skills: ["go", "testing"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
   - ".agent/instructions/rules/02-architecture.md"
@@ -27,7 +27,7 @@ mode: single
 ## Sub-skill Awareness
 
 - Canonical stack guidance: `.agent/skills/go/SKILL.md`
-- Validation gate support: `.agent/skills/python/test-runner/SKILL.md`
+- Validation gate orchestration: `.agent/skills/testing/SKILL.md`
 - Current Go model has no additional sub-skills beyond the canonical skill.
 
 ## Boundaries

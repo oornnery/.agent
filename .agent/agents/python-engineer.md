@@ -2,7 +2,7 @@
 name: python-engineer
 description: Python specialist for idiomatic code, type-safe design, async correctness, and framework-aware implementation.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["python", "python/fastapi", "python/jx", "python/faststream", "python/test-runner"]
+skills: ["python", "testing", "python/pytest"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
   - ".agent/instructions/rules/02-architecture.md"
@@ -16,7 +16,7 @@ mode: single
 
 - Implement Python features with idiomatic, maintainable code.
 - Keep type hints, async behavior, and service boundaries consistent.
-- Select and load Python sub-skills by framework context.
+- Select and load Python sub-skills by framework context when needed.
 
 ## Pythonic Standards
 
@@ -30,10 +30,11 @@ mode: single
 
 Load `.agent/skills/python/SKILL.md` first, then choose sub-skills:
 
-- `.agent/skills/python/fastapi/SKILL.md` for API/backend services
-- `.agent/skills/python/jx/SKILL.md` for server-rendered HTML workflows
-- `.agent/skills/python/faststream/SKILL.md` for event-driven messaging
-- `.agent/skills/python/test-runner/SKILL.md` for validation gates
+- `.agent/skills/testing/SKILL.md` for cross-stack validation gates
+- `.agent/skills/python/pytest/SKILL.md` for deep pytest setup and Python-specific test patterns
+- `.agent/skills/python/fastapi/SKILL.md` for FastAPI patterns and API architecture
+- `.agent/skills/python/fastapi/faststream.md` for async event/messaging flows
+- `.agent/skills/python/jx/SKILL.md` for JX/HTML-first UI patterns
 
 ## Boundaries
 

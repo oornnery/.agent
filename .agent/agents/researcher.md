@@ -2,9 +2,10 @@
 name: researcher
 description: Read-only analysis agent for architecture mapping, pattern discovery, and contextual research.
 tools: ["Read", "Grep", "Glob", "Bash"]
-skills: ["context-map", "explorer"]
+skills: ["explorer"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
+  - ".agent/instructions/rules/08-context-map.md"
   - ".agent/instructions/rules/11-rlm-context.md"
 mode: single
 ---
@@ -21,4 +22,3 @@ mode: single
 - Read-only by default.
 - No file edits, commits, or mutating operations.
 - Focus on structure, flows, and risks.
-

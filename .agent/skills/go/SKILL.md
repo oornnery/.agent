@@ -20,9 +20,11 @@ Use this skill for Go module workflows and quality checks.
 - Treat compile/build checks as type safety gates
 
 ## Guide
-# Stack: Go
+
+## Stack: Go
 
 ## Package Manager
+
 - **Tool**: go mod
 - **Lock file**: `go.sum`
 - **Config**: `go.mod`
@@ -30,35 +32,42 @@ Use this skill for Go module workflows and quality checks.
 ## Commands
 
 ### Initialize Module
+
 ```bash
 go mod init github.com/user/project
 ```
 
 ### Add Dependencies
+
 ```bash
 go get <package>
 go mod tidy
 ```
 
 ### Format
+
 ```bash
 go fmt ./...
 gofmt -w .
 ```
 
 ### Lint
+
 ```bash
 go vet ./...
 golangci-lint run
 ```
 
 ### Typecheck
+
 Go is statically typed, so compile = typecheck:
+
 ```bash
 go build ./...
 ```
 
 ### Run Tests
+
 ```bash
 # Quick run
 go test ./...
@@ -73,12 +82,14 @@ go tool cover -html=coverage.out
 ```
 
 ### Run Application
+
 ```bash
 go run .
 go run cmd/app/main.go
 ```
 
 ### Build
+
 ```bash
 go build -o bin/app .
 ```
@@ -106,7 +117,7 @@ jobs:
 
 ## File Structure
 
-```
+```text
 project/
 ├── go.mod
 ├── go.sum

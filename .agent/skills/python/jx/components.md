@@ -45,7 +45,7 @@ html = catalog.render("@ui/pages/Home.jinja", title="My App", heading="Welcome")
 
 ## Component Tree
 
-```
+```text
 @ui/
 ├── layouts/
 │   ├── Layout.jinja          # Base HTML shell (head, body, scripts)
@@ -112,7 +112,7 @@ html = catalog.render("@ui/pages/Home.jinja", title="My App", heading="Welcome")
 **File:** `layouts/Layout.jinja`
 **Props:** `title="Fabio Souza"`, `lang="en"`, `description=""`, `navbar_links=None`, `brand=None`, `breadcrumb=None`
 
-```
+```text
 Imports: Content, Footer, Navbar, Breadcrumb
 Scripts: Tailwind CDN, HTMX, Idiomorph, Alpine.js
 Body:    x-data="{ dark: false }" with localStorage persistence
@@ -120,6 +120,7 @@ Portals: #modal-portal, #toast-portal
 ```
 
 Key behaviors:
+
 - `tailwind.config = { darkMode: 'class' }` — MUST come AFTER CDN script
 - `htmx:afterSwap` — skips `Alpine.initTree()` for morph swaps
 - `hx-ext="morph"` on body enables Idiomorph globally
@@ -130,7 +131,7 @@ Key behaviors:
 **Props:** `brand="App"`, `img=None`, `links=None`
 **Default links:** `[{label: 'Home', href: '/'}, {label: 'Status', href: '/status'}]`
 
-```
+```text
 sticky top-0 z-40 border-b backdrop-blur-lg
   └─ Brand (img or initial avatar) + Nav links (gap-1) + ThemeToggle
 ```
@@ -153,7 +154,7 @@ sticky top-0 z-40 border-b backdrop-blur-lg
 **Props:** `brand="App"`, `links=None`
 **Globals used:** `current_year`
 
-```
+```text
 border-t, max-w-6xl, flex row on sm+
   └─ © {year} {brand} + optional nav links
 ```
@@ -192,7 +193,7 @@ border-t, max-w-6xl, flex row on sm+
 **File:** `ui/Badge.jinja`
 **Props:** `tone="neutral"` (neutral | success | danger)
 
-```
+```text
 rounded-full pill, px-2 py-0.5, text-xs font-medium, ring-1 ring-inset
 ```
 
@@ -207,7 +208,7 @@ rounded-full pill, px-2 py-0.5, text-xs font-medium, ring-1 ring-inset
 **Props:** `title=""`, `subtitle=""`
 **Slots:** `footer`
 
-```
+```text
 ┌──────────────────────────────────┐
 │ Header: title + subtitle (px-5 py-4) │ ← border-b (if title/subtitle)
 ├──────────────────────────────────┤
@@ -232,7 +233,7 @@ rounded-full pill, px-2 py-0.5, text-xs font-medium, ring-1 ring-inset
 **Props:** `title=""`, `open=true`
 **Slots:** `actions`
 
-```
+```text
 z-50, max-w-lg, rounded-xl, shadow-xl
 Overlay: zinc-950/60
 Close:   Escape key, backdrop click, ✕ button
@@ -254,7 +255,7 @@ Cleanup: x-effect removes element when closed
 **File:** `ui/StatusDot.jinja`
 **Props:** `ok=false`
 
-```
+```text
 h-2.5 w-2.5 rounded-full, aria-hidden="true"
 ok=true  → emerald-500 / dark:emerald-400
 ok=false → rose-500 / dark:rose-400
@@ -282,7 +283,7 @@ ok=false → rose-500 / dark:rose-400
 **File:** `partials/ThemeToggle.jinja`
 **Props:** none
 
-```
+```text
 h-9 w-9 button with Sun (dark:block) / Moon (dark:hidden)
 @click="dark = !dark" — toggles body-level Alpine state
 ```
@@ -292,13 +293,14 @@ h-9 w-9 button with Sun (dark:block) / Moon (dark:hidden)
 **File:** `partials/Toast.jinja`
 **Props:** `message=""`, `tone="success"` (success | danger | neutral)
 
-```
+```text
 Delivery: hx-swap-oob="true" → replaces #toast-portal
 Position: fixed right-4 top-4 z-50
 Duration: 3000ms auto-dismiss via setTimeout
 ```
 
 Server-side usage:
+
 ```python
 # Return toast alongside normal response
 toast_html = catalog.render("@ui/partials/Toast.jinja", message="Saved!", tone="success")
@@ -334,13 +336,14 @@ Target of `#healthz-summary` div in Health page for morph polling.
 **Props:** `service=None` — object with `id`, `name`, `url`, `ok`, `code`, `datetime`
 **Imports:** StatusDot, Badge
 
-```
+```text
 id="healthz-item-{{ service.id }}" — stable ID for Idiomorph matching
 Alpine x-data: { open, logs, es, connect(), disconnect(), toggle() }
 SSE: EventSource('/healthz/logs/stream?service_id={{ service.id }}')
 ```
 
 Key behaviors:
+
 - `toggle()` → connects/disconnects SSE based on open state
 - `@htmx:before-swap.window` → only disconnects when swap target is NOT `#healthz-summary`
 - Chevron rotates 180° when open
@@ -354,7 +357,7 @@ Key behaviors:
 
 **Props:** `title="Home"`, `brand=None`, `heading="Hello, World!"`, `description="Your app is running..."`
 
-```
+```text
 ┌─────────────────────────────────────┐
 │ Navbar [Brand] [Home] [Status] [☾]  │
 ├─────────────────────────────────────┤
@@ -377,7 +380,7 @@ Key behaviors:
 
 **Props:** `title="Service health"`, `brand=None`, `summary_url="/healthz/summary"`, `request=None`
 
-```
+```text
 ┌─────────────────────────────────────┐
 │ Navbar                              │
 ├─────────────────────────────────────┤
@@ -413,7 +416,7 @@ Key behaviors:
 
 **Props:** `title="Error"`, `brand=None`, `error_title="Page not found"`, `message="The page you are..."`, `back_href="/"`, `home_href="/"`, `home_label="Go to Home"`
 
-```
+```text
 ┌─────────────────────────────────────┐
 │ Navbar                              │
 ├─────────────────────────────────────┤
@@ -463,7 +466,7 @@ return HTMLResponse(main + toast)
 
 ## SSE Lifecycle
 
-```
+```text
 User clicks accordion item
   → toggle()
     → open = true

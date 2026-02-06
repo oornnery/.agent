@@ -2,7 +2,7 @@
 name: node-engineer
 description: Node.js specialist for TypeScript-first implementation, package-manager/runtime selection, and reliable validation.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["node", "python/test-runner"]
+skills: ["node", "testing"]
 default_rules:
   - ".agent/instructions/rules/00-core.md"
   - ".agent/instructions/rules/02-architecture.md"
@@ -34,7 +34,7 @@ Load `.agent/skills/node/SKILL.md` first, then:
 - `.agent/skills/node/bun.md` when `bun.lockb`/`bunfig.toml` exists
 - `.agent/skills/node/pnpm.md` when `pnpm-lock.yaml` exists
 - `.agent/skills/node/npm.md` when `package-lock.json` exists
-- `.agent/skills/python/test-runner/SKILL.md` for validation gates
+- `.agent/skills/testing/SKILL.md` for validation gate orchestration
 
 ## Boundaries
 

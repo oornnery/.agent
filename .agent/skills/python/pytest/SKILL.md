@@ -1,9 +1,9 @@
 ---
-name: test-runner
+name: pytest
 description: Complete Python testing workflow: environment setup, pytest ecosystem, test authoring, async/parallel execution, coverage, and failure diagnosis.
 ---
 
-# Test Runner Skill
+# Pytest Skill
 
 Set up, write, run, and debug Python tests with reliable quality gates.
 
@@ -27,6 +27,7 @@ Set up, write, run, and debug Python tests with reliable quality gates.
 ## Canonical Stack Source
 
 Use `.agent/skills/python/SKILL.md` as the source of truth for baseline Python toolchain commands.
+For cross-stack validation gate policy, pair with `.agent/skills/testing/SKILL.md`.
 
 ## Environment Preparation
 

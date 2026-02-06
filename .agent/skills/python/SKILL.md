@@ -1,20 +1,32 @@
 ---
 name: python
-description: Python parent skill with uv-based toolchain workflow and Python submodules (FastAPI, JX, FastStream).
+description: Python parent skill with uv-based toolchain workflow and Python submodules (FastAPI, JX, testing, HTTP client, TUI, and CLI).
 ---
 
 # Python Skill
 
 Use this parent skill when writing, reviewing, or validating Python codebases.
 
+## Documentation
+
+- Python Docs: <https://docs.python.org/3/>
+- uv Docs: <https://docs.astral.sh/uv/>
+- uv LLMs: <https://docs.astral.sh/uv/llms.txt>
+- Ruff Docs: <https://docs.astral.sh/ruff/>
+- Ruff LLMs: <https://docs.astral.sh/ruff/llms.txt>
+- pytest Docs: <https://docs.pytest.org/>
+- Rich Docs: <https://rich.readthedocs.io/en/stable/>
+
 ## Python Submodules
 
 Use Python submodules from this folder for framework-specific guidance:
 
-- `.agent/skills/python/fastapi/SKILL.md`
+- `.agent/skills/python/fastapi/SKILL.md` (includes FastStream event-driven patterns)
 - `.agent/skills/python/jx/SKILL.md`
-- `.agent/skills/python/faststream/SKILL.md`
-- `.agent/skills/python/test-runner/SKILL.md`
+- `.agent/skills/python/pytest/SKILL.md`
+- `.agent/skills/python/httpx/SKILL.md`
+- `.agent/skills/python/textual/SKILL.md`
+- `.agent/skills/python/typer/SKILL.md`
 
 ## Loading Order
 
@@ -29,7 +41,9 @@ Use Python submodules from this folder for framework-specific guidance:
 - uv dependency and environment management
 - Validation pipeline (format, lint, typecheck, test)
 - CI parity for Python projects
-- Framework submodule routing (FastAPI, JX, FastStream)
+- Framework submodule routing (FastAPI, JX)
+- Event-driven backend guidance via FastAPI companion (`fastapi/faststream.md`)
+- Python ecosystem modules for HTTP integrations, TUIs, and CLIs
 
 ## Code Conventions
 
@@ -37,7 +51,67 @@ Use Python submodules from this folder for framework-specific guidance:
 - f-strings only (avoid `.format()`)
 - Prefer early returns over deep nesting
 - Avoid mutable global state
-- Use `logging` over `print`
+- Never use `print` for application logs; use `logging`
+
+## Logging and Console Output
+
+### Rules
+
+- Use the stdlib `logging` module as the default logging API.
+- Avoid `print` in application/library code.
+- Configure logging once at the entrypoint (`main.py`, CLI bootstrap, app startup).
+- Use `RichHandler` for readable local/dev logs.
+- Keep `print` only for very simple throwaway scripts.
+
+### Install (recommended)
+
+```bash
+uv add rich
+```
+
+### Module-level Logger Pattern
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+def run_job(job_id: str) -> None:
+    logger.info("Starting job", extra={"job_id": job_id})
+```
+
+### Entrypoint Logging Setup with Rich
+
+```python
+import logging
+from rich.logging import RichHandler
+
+
+def configure_logging(level: int = logging.INFO) -> None:
+    logging.basicConfig(
+        level=level,
+        format="%(message)s",
+        datefmt="[%X]",
+        handlers=[RichHandler(rich_tracebacks=True, markup=True)],
+    )
+```
+
+### CLI Output vs Logs
+
+- Use `logging` for operational logs (`debug/info/warning/error`).
+- Use `rich.console.Console` for user-facing CLI output (tables, progress, success/error messages).
+
+```python
+import logging
+from rich.console import Console
+
+logger = logging.getLogger(__name__)
+console = Console()
+
+console.print("[bold green]Done[/bold green]")
+logger.info("Command finished", extra={"command": "sync"})
+```
 
 ## Type Hints
 

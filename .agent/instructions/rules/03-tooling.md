@@ -11,6 +11,7 @@ Always run the full validation loop for the detected stack before finalizing wor
 
 ## Canonical Command Sources (by stack)
 
+- Validation orchestration: `.agent/skills/testing/SKILL.md`
 - Python: `.agent/skills/python/SKILL.md`
 - Node: `.agent/skills/node/SKILL.md`
 - Go: `.agent/skills/go/SKILL.md`

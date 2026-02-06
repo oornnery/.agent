@@ -270,7 +270,7 @@ document.addEventListener('alpine:init', () => {
   @click.outside="open = false"
   @keydown.escape.window="open = false"
   class="relative inline-block">
-  
+
   <button 
     @click="open = !open"
     class="px-4 py-2 bg-white border rounded-lg shadow-sm hover:bg-gray-50">
@@ -281,7 +281,7 @@ document.addEventListener('alpine:init', () => {
       <path d="M7 10l5 5 5-5z"/>
     </svg>
   </button>
-  
+
   <div 
     x-show="open"
     x-transition:enter="transition ease-out duration-100"
@@ -372,7 +372,7 @@ document.addEventListener('alpine:init', () => {
   }"
   @toast.window="add($event.detail)"
   class="fixed bottom-4 right-4 z-50 space-y-2">
-  
+
   <template x-for="toast in toasts" :key="toast.id">
     <div 
       x-transition:enter="transition ease-out duration-300"
@@ -396,6 +396,7 @@ document.addEventListener('alpine:init', () => {
 ```
 
 Trigger from anywhere:
+
 ```jinja
 <button @click="$dispatch('toast', { 
   type: 'success', 
@@ -462,7 +463,7 @@ Trigger from anywhere:
   x-data="{ loading: false }"
   @htmx:before-request="loading = true"
   @htmx:after-request="loading = false">
-  
+
   <button 
     hx-get="/api/data"
     hx-target="#results"
@@ -471,7 +472,7 @@ Trigger from anywhere:
     <span x-show="!loading">Load Data</span>
     <span x-show="loading">Loading...</span>
   </button>
-  
+
   <div id="results"></div>
 </div>
 ```
@@ -506,7 +507,7 @@ Trigger from anywhere:
   hx-post="/api/subscribe"
   hx-target="#result"
   hx-swap="innerHTML">
-  
+
   <input 
     type="email"
     name="email"
@@ -514,7 +515,7 @@ Trigger from anywhere:
     @input="validate()"
     :class="{ 'border-green-500': isValid, 'border-red-500': email && !isValid }"
     class="border px-3 py-2 rounded">
-  
+
   <button 
     type="submit"
     :disabled="!isValid"
