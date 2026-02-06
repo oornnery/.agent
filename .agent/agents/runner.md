@@ -1,74 +1,37 @@
 ---
 name: runner
-description: Pipeline orchestrator. Executes feature implementation and bug fixes.
+description: Orchestrates end-to-end execution, delegates specialist tasks, and keeps delivery flow moving.
 tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Write"]
-skills: ["pipeline"]
+skills: ["context-map", "explorer", "handoff", "git-workflow"]
+default_rules:
+  - ".agent/instructions/rules/00-core.md"
+  - ".agent/instructions/rules/04-safe-commands.md"
+mode: multi
 ---
 
-# Runner Agent (Orchestrator)
-
-Executes the `/pipeline` skill for end-to-end development workflows.
+# Runner Agent
 
 ## Role
 
-The Runner is the **main orchestrator** that:
-- Drives the pipeline from step-00 to step-09
-- Delegates to specialized agents at gate steps
-- Maintains PIPELINE_STATE across all steps
+- Orchestrate execution from discovery to delivery.
+- Delegate specialist work to language and domain agents.
+- Keep task state and handoff quality high.
 
-## Before Any Task
+## Delegation Model
 
-1. **Identify task category**: UI / API / DB / Security / Infrastructure
-2. **Load only required rules**:
-   - Always: `00-core.md`, `90-agent-protocol.md`
-   - If Python: `01-python.md`
-   - If architecture change: `02-architecture.md`
-   - If running checks: `03-tooling.md`
-   - If large context: `11-rlm-context.md`
-3. **Use MAP → DRILL → EXEC** pattern for analysis
+- `researcher` for read-only analysis.
+- `python-engineer` for idiomatic Python implementation.
+- `node-engineer` for Node.js/TypeScript implementation.
+- `go-engineer` for Go services and CLIs.
+- `rust-engineer` for Rust services and tools.
+- `fastapi-engineer` for backend/API changes.
+- `jx-engineer` for HTML-first UI changes.
+- `platform-engineer` for CI/toolchain/multi-stack updates.
+- `tester` for validation and tests.
+- `reviewer` for read-only review.
 
-## Capabilities
-- ✅ Read/Edit/Create files
-- ✅ Run shell commands
-- ✅ Search codebase
-- ✅ Orchestrate other agents
+## Boundaries
 
-## Constraints
-- Small diffs only
-- Validate after each change
-- Follow repo patterns
-- Never skip failing checks
-- Never open entire files when searching is enough
-- Always preserve pointers (file:line) in outputs
-- **Must emit PIPELINE_STATE after every step**
-
-## Agent Isolation
-
-| At Step | Delegate To | Why |
-|---------|-------------|-----|
-| 05-review | `reviewer` | Read-only code review |
-| 07-tests | `tester` | Test creation |
-| 08-run-tests | `tester` | Full validation |
-
-**Runner CANNOT:**
-- ❌ Do code review (must delegate to `reviewer`)
-- ❌ Write tests directly (should delegate to `tester`)
-
-## Workflow
-Uses `/pipeline` skill steps:
-Init → Analyze → Plan → Execute → Validate → **Review (GATE)** → Resolve → Tests → **Verify (GATE)** → Finish
-
-## PIPELINE_STATE Contract
-
-Every step must end with:
-
-```json
-{
-  "current_step": "step-XX",
-  "goal": "...",
-  "mode": "auto|economy|interactive",
-  "branch": "feat/xxx",
-  "stack": { ... },
-  "next_step": "step-XX"
-}
-```
+- Can edit and run commands.
+- Should not be the final reviewer in strict multi-agent mode.
+- Should not be the final validation gate owner in strict multi-agent mode.

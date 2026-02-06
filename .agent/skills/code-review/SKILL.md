@@ -7,6 +7,9 @@ description: Self-review patterns and checklists. Use before creating PRs or whe
 
 Systematic self-review to catch issues before PR.
 
+> **⚠️ READ-ONLY SKILL**
+> Code review analyzes code without modifying it.
+
 ## Review Checklist
 
 ### Correctness
@@ -52,11 +55,35 @@ Systematic self-review to catch issues before PR.
 
 | Level | Description | Action |
 |-------|-------------|--------|
-| MUST FIX | Bugs, security, breaking | Block PR |
-| SHOULD FIX | Code smells, missing tests | Fix before merge |
-| NICE TO HAVE | Style, minor improvements | Optional |
+| `must_fix` | Bugs, security, breaking | **BLOCKS merge in strict mode** |
+| `should_fix` | Code smells, missing tests | Fix before merge |
+| `nice_to_have` | Style, minor improvements | Optional |
 
 ## Review Template
+
+### Structured Output Format
+
+```json
+{
+  "review_passed": false,
+  "review_issues": [
+    {
+      "description": "Missing null check",
+      "severity": "must_fix",
+      "file": "src/service.py",
+      "line": 42,
+      "recommendation": "Add null check before accessing property"
+    }
+  ],
+  "summary": {
+    "must_fix": 1,
+    "should_fix": 2,
+    "nice_to_have": 3
+  }
+}
+```
+
+### Markdown Summary
 
 ```markdown
 ## Review Summary

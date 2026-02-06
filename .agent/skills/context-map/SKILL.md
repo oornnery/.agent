@@ -7,6 +7,9 @@ description: Fast repository indexing for RLM workflows. Use before analysis to 
 
 Create a lightweight index of the repository structure without reading full file contents.
 
+> **⚠️ READ-ONLY SKILL**
+> Context map analyzes structure without reading file contents.
+
 ## Usage
 
 ```bash
@@ -55,7 +58,7 @@ context-map [path]   # Generate index for path (default: current repo)
 
 ## Integration with Pipeline
 
-Use at Step 00 (Init) or Step 01 (Analyze):
+Use at the start of analysis/planning:
 
 ```markdown
 ## Before Analysis
@@ -68,5 +71,5 @@ Use at Step 00 (Init) or Step 01 (Analyze):
 ## Best Practices
 
 - Generate once per session, refresh if changing branches
-- Use as input for step-01-analyze.md
+- Use as input for analysis/planning documents
 - Combine with explorer skill for deeper dives

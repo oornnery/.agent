@@ -1,11 +1,22 @@
 ---
 name: handoff
-description: Context management and session transfer. Use when you need to summarize current state, clear context, or prepare for session continuation.
+description: Context management, session transfer, and pipeline state tracking. Use for preserving work state, managing agent delegation, and enabling session continuity.
 ---
 
 # Handoff Skill
 
 Manage context and enable session continuity.
+
+> **⚠️ CONTEXT MANAGEMENT SKILL**
+> Use when context reaching ~60% capacity or switching between major tasks.
+
+## Role
+
+The Handoff skill manages:
+- Session state preservation
+- Context transfer between agents
+- Pipeline state tracking
+- Work resumption after interruptions
 
 ## When to Use
 
@@ -13,6 +24,23 @@ Manage context and enable session continuity.
 - Switching between major tasks
 - End of work session
 - Before clearing conversation
+
+## Constraints
+
+- Small diffs only
+- Validate after each change
+- Follow repo patterns
+- Never skip failing checks
+- Never open entire files when searching is enough
+- Always preserve pointers (file:line) in outputs
+
+## Pipeline Workflow (Optional)
+
+Use canonical rules instead of duplicating protocol details:
+
+- Multi-agent protocol and `PIPELINE_STATE`: `.agent/instructions/rules/90-agent-protocol.md`
+- Context strategy (`MAP → DRILL → EXEC`): `.agent/instructions/rules/11-rlm-context.md`
+- Rule loading matrix: `.agent/instructions/rules/INDEX.md`
 
 ## Handoff Process
 
@@ -89,3 +117,8 @@ When starting new session:
 - Include exact file paths
 - Document decisions with reasoning
 - Provide concrete next steps
+
+## Protocol References
+
+- `PIPELINE_STATE` contract: `.agent/instructions/rules/90-agent-protocol.md`
+- Agent role boundaries: `.agent/agents/INDEX.md`
